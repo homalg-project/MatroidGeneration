@@ -44,3 +44,15 @@ InstallGlobalFunction( IsSymmetricMultiplicityVector,
     return ForAll( relevantNumbers, i -> Number(vec, j -> j=i ) = symmetryNumber );
     
 end );
+
+##
+InstallGlobalFunction( FlatenMultiplicityVector,
+  function( vec )
+    
+    if ForAll( vec, IsList ) then
+        vec := Concatenation( List( vec, a -> ListWithIdenticalEntries( a[2], a[1] ) ) );
+    fi;
+    
+    return Reversed( SortedList( vec ) );
+    
+end );

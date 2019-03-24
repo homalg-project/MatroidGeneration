@@ -651,9 +651,7 @@ InstallMethod( Rank3MatroidIterator,
         only_balanced_matroids := false;
     fi;
     
-    if ForAll( multiplicity_vector, IsList ) then
-        multiplicity_vector := Concatenation( List( multiplicity_vector, a -> ListWithIdenticalEntries( a[2], a[1] ) ) );
-    fi;
+    multiplicity_vector := FlatenMultiplicityVector( multiplicity_vector );
     
     return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], only_balanced_matroids );
     

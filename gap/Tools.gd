@@ -11,3 +11,5 @@
 DeclareGlobalFunction( "CopyPermGroup" );
 
 DeclareGlobalFunction( "IsSymmetricMultiplicityVector" );
+
+DeclareGlobalFunction( "FlatenMultiplicityVector" );
