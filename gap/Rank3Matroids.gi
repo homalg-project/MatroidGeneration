@@ -5,7 +5,7 @@
 #
 
 ##
-InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3Matroids,
+InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
   function( n )
     local balanced, bino, result, maxExponentRange, exp1, exp2, b2, maxMultiplicity, numberOfCoatoms, MultiplicityVectors, currentMultiplicityVector;
     
