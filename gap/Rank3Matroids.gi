@@ -229,3 +229,198 @@ InstallGlobalFunction( MinimalAdjList,
     return minAdjList;
     
 end );
+
+##
+InstallGlobalFunction( IteratorOfFlatsPerBlock,
+  function( info )
+    local els, k, previousFlat, comb, lastAtom, interestingAtoms, n, maxAtom, elsFiltered, moveForward,
+          len, iter, nextComb, iterEmpty, i, pairCheckMatrix, wasteBudget, excessVector, costAtom,
+          NextIterator_NextFlat, IsDoneIterator_NextFlat, ShallowCopy_NextFlat, res_iter;
+    
+    els := info!.els;
+    k := info!.k;
+    
+    if k > Length(els) then
+        return IteratorList([]);
+    fi;
+    
+    previousFlat := info!.previousFlat;
+    
+    #   if ForAny(comb, i -> i = fail) then
+    #     Error("PreviousFlat is not part of els!");
+    #   fi;
+    
+    lastAtom := info!.lastAtom;
+    
+    interestingAtoms := info!.interestingAtoms;
+    
+    n := info!.n;
+    
+    maxAtom := Minimum(lastAtom + k, n);
+    
+    elsFiltered := Filtered(els, i -> (i <= maxAtom and lastAtom < i) or i in interestingAtoms);
+    
+    pairCheckMatrix := info!.pairCheckMatrix;
+    
+    wasteBudget := info!.wasteBudget;
+    
+    excessVector := info!.excessVector;
+    
+    costAtom := List( excessVector, i -> Maximum(k - 2 -i , 0 ));
+    
+    elsFiltered := Filtered( elsFiltered, i -> costAtom[i] <= wasteBudget );
+    
+    len := Length(elsFiltered);
+    
+    if len < k then
+        return IteratorList([]);
+    fi;
+    
+    if Length(previousFlat) = k then
+        comb := List(previousFlat, i -> Position(elsFiltered, i));
+    elif Length(previousFlat) = 0 then
+        #Special case when the previous Flat has a different length. Comb is set in a way that the first call of Nextiterator will consider the right value [1..k].
+        comb := [1 .. k ];
+        comb[k] := k - 1;
+    else
+        Error("Previous Flat is too long or short.");
+    fi;
+    
+    #Print("before while", comb, " previousFlat: ", previousFlat, "\n");
+    if ForAny(comb, i -> i = fail) then
+        comb := [1 .. k ];
+        comb[k] := k - 1;
+        iter := IteratorOfCombinations([1 .. Length(elsFiltered)], k);
+        iterEmpty := true;
+        for nextComb in iter do
+            if elsFiltered{nextComb} <= previousFlat then
+                comb := nextComb;
+            else
+                iterEmpty := false;
+                break;
+            fi;
+        od;
+        
+        if iterEmpty then
+            return IteratorList([]);
+        fi;
+    fi;
+    
+    #Print("after while comb: ", comb, " flat: ", elsFiltered{comb}, "\n");
+    
+    NextIterator_NextFlat := function(it)
+      local res, comb, k, addedPos, i, len, iterEmpty, skip, lastOldIndex, nextFlat, pairMat, pairCheck, costAtom, wasteBudget;
+      
+      comb := it!.comb;
+      if comb = fail then
+          Error("No more elements in iterator.");
+      fi;
+      
+      # first create combination to return
+      res := it!.els{comb};
+      
+      # now construct indices for next combination
+      len := it!.len;
+      k := it!.k;
+      addedPos := it!.addedPos;
+      iterEmpty := false;
+      skip := true;
+      
+      while skip do
+          iterEmpty := true;
+          
+          for i in [0..(k-1)] do
+              if comb[k-i] < len - i then
+                  comb{[k-i..k]} := [comb[k-i] + 1 .. comb[k-i] + 1 + i];
+                  iterEmpty := false;
+                  break;
+              fi;
+          od;
+          
+          if iterEmpty then
+              break;
+          fi;
+          
+          #Remove redundancy from last Atoms which have not been used.
+          #I.e. only use the first ones of those. If not comb is fast forwarded.
+          if not addedPos = fail then
+              if comb[k] > addedPos and ForAny([addedPos .. comb[k] - 1], l -> not l in comb ) then
+                  lastOldIndex := PositionProperty(comb, i -> i >= addedPos) - 1;
+                  comb{[lastOldIndex .. k]} := [comb[lastOldIndex] + 1 .. comb[lastOldIndex] + 1 + k - lastOldIndex];
+              fi;
+          fi;
+          
+          nextFlat := it!.els{comb};
+          
+          #Check if nextFlat >= previousflat
+          if nextFlat <= it!.previousFlat then
+              continue;
+          fi;
+          
+          #Check if the next Flat joins two Atoms which are already joined.
+          pairMat := it!.pairCheckMatrix;
+          skip := false;
+          for pairCheck in Combinations(nextFlat, 2) do
+              if pairMat[pairCheck[1]][pairCheck[2]] = 1 then
+                  skip := true;
+                  break;
+              fi;
+          od;
+          if skip then
+              continue;
+          fi;
+          
+          #check if wasteBudget
+          costAtom := it!.costAtom;
+          wasteBudget := it!.wasteBudget;
+          if Sum( nextFlat, i -> costAtom[i]) > wasteBudget then
+              skip := true;
+          fi;
+      od;
+      
+      # check if done
+      if iterEmpty then
+          it!.comb := fail;
+      fi;
+      
+      return res;
+    end;
+    
+    IsDoneIterator_NextFlat := function(it)
+      return it!.comb = fail;
+    end;
+    
+    ShallowCopy_NextFlat := function(it)
+      return rec(
+                 NextIterator := it!.NextIterator,
+                 IsDoneIterator := it!.IsDoneIterator,
+                 ShallowCopy := it!.ShallowCopy,
+                 els := it!.els,
+                 k := it!.k,
+                 comb := ShallowCopy(it!.comb));
+    end;
+    
+    res_iter := IteratorByFunctions(rec(
+                        NextIterator := NextIterator_NextFlat,
+                        IsDoneIterator := IsDoneIterator_NextFlat,
+                        ShallowCopy := ShallowCopy_NextFlat,
+                        els := elsFiltered,
+                        k := k,
+                        comb := comb,
+                        len := len,
+                        previousFlat := previousFlat,
+                        pairCheckMatrix := pairCheckMatrix,
+                        addedPos := Position(elsFiltered, lastAtom + 1),
+                        wasteBudget := wasteBudget,
+                        costAtom := costAtom));
+    
+    #Move Iterator once, to get next element.
+    if IsDoneIterator(res_iter) then
+        return IteratorList([]);
+    fi;
+    
+    previousFlat := NextIterator(res_iter);
+    
+    return res_iter;
+    
+end );
