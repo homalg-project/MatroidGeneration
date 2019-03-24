@@ -42,7 +42,7 @@ InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
                 # Makes sure the MultiplicityVector can come from an arrangement
                 if Sum(List(currentMultiplicityVector, x -> Binomial(x, 2))) = bino then
                     if not currentMultiplicityVector in result then
-                        Append(result, [currentMultiplicityVector] );
+                        Add(result, Reversed( Collected( currentMultiplicityVector ) ) );
                     fi;
                 fi;
             od;
@@ -649,6 +649,10 @@ InstallMethod( Rank3MatroidIterator,
     
     if only_balanced_matroids = fail then
         only_balanced_matroids := false;
+    fi;
+    
+    if ForAll( multiplicity_vector, IsList ) then
+        multiplicity_vector := Concatenation( List( multiplicity_vector, a -> ListWithIdenticalEntries( a[2], a[1] ) ) );
     fi;
     
     return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], only_balanced_matroids );
