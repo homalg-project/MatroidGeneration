@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2018.12.09", ## Mohamed's version
+                   "2018.12.10", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.06", ## Lukas's version
                    ] ),
@@ -91,6 +91,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "images", ">= 1.1.0" ],
+                   [ "ParallelizedIterators", ">= 2018.12.09" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

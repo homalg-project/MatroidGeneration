@@ -424,3 +424,230 @@ InstallGlobalFunction( IteratorOfFlatsPerBlock,
     return res_iter;
     
 end );
+
+##
+InstallGlobalFunction( IteratorOfNextBlock,
+  function(n, previousBlocks, flatCardinalityVector, stabilizerPreviousBlocks, iteratorState, only_balanced_matroids )
+    local blockLength, stack, excessVector, wasteBudget, r;
+    
+    previousBlocks := MakeReadOnlyObj( previousBlocks );
+    flatCardinalityVector := MakeReadOnlyObj( flatCardinalityVector );
+    stabilizerPreviousBlocks := MakeReadOnlyObj( stabilizerPreviousBlocks );
+    iteratorState := MakeReadOnlyObj( iteratorState );
+    
+    stabilizerPreviousBlocks := CopyPermGroup( stabilizerPreviousBlocks);
+    
+    blockLength := PositionProperty( flatCardinalityVector, k -> k < flatCardinalityVector[1]);
+    
+    if blockLength = fail then
+        blockLength := Length( flatCardinalityVector );
+    else
+        blockLength := blockLength - 1;
+    fi;
+    
+    if flatCardinalityVector[1] = 2 then
+        return Iterator( [SortedList( AddFlatsConnectingPairsOfAtoms(n, [], NullMat( n, n))) ]);
+    fi;
+    
+    stack := CreateAugmentedLiFoOfIterators();
+    
+    stack!.minimalBlocks := [ ];
+    
+    if Length( previousBlocks ) = 0 then
+        
+        #this makes sure the matroids are balanced with respect to the atoms
+        excessVector := List([1 .. n], l -> ((n - 1) / 2));
+        
+        if only_balanced_matroids then
+            wasteBudget := FlatExcessOfMultiplicityVector(flatCardinalityVector) - Sum(excessVector);
+        else
+            wasteBudget := 10*n^3;
+        fi;
+        
+        iteratorState := rec(
+                             k := flatCardinalityVector[1],
+                             els:= [1..n],
+                             previousFlat := [],
+                             pairCheckMatrix := NullMat( n, n),
+                             n := n,
+                             lastAtom := 0,
+                             interestingAtoms := [1],
+                             excessVector := excessVector,
+                             wasteBudget := wasteBudget,
+                             previousFlats := []);
+        iteratorState := MakeReadOnlyObj( iteratorState );
+    fi;
+    
+    Push(stack,[IteratorOfFlatsPerBlock(iteratorState), iteratorState]);
+    
+    r := rec(
+             stack := stack,
+             blockLength := blockLength,
+             stabilizerPreviousBlocks := stabilizerPreviousBlocks,
+             only_balanced_matroids := only_balanced_matroids,
+             
+             locally_uniform := true,
+             
+             NextIterator := function(it)
+               local stack, previousFlats, iteratorState, nextFlat, n, newExcessVector,
+                     newWasteBudget, newFlatList, newLength, newPairMat, newLastUsedAtom,
+                     interestingAtoms, newInterestingAtoms, removeRow, newIteratorState,
+                     blockLength, newIter, currentMinimalBlock, newPreviousBlocks,
+                     completeAdjList, newMultiplicityVector, stabilizerPreviousBlocks,
+                     newStabilizerPreviousBlocks, nextIter;
+               
+               stack := it!.stack;
+               
+               while (Length(stack) > 0) do
+                   
+                   iteratorState := InfoOfLiFo(stack);
+                   nextFlat := Pop(stack);
+                   n := iteratorState!.n;
+                   previousFlats := iteratorState!.previousFlats;
+                   
+                   #TODO remove symmetry here
+                   
+                   if nextFlat = fail then
+                       continue;
+                   fi;
+                   
+                   newExcessVector := ChangeExcessCounter(iteratorState!.excessVector, nextFlat);
+                   
+                   if only_balanced_matroids then
+                       newWasteBudget := FlatExcessOfMultiplicityVector(
+                                                 flatCardinalityVector{[(Length(previousFlats)+2) .. Length(flatCardinalityVector)]}) - Sum(newExcessVector);
+                   else
+                       newWasteBudget := 10*n^3;
+                   fi;
+                   
+                   newFlatList := Concatenation( previousFlats, [ nextFlat ] );
+                   
+                   newLength := Length(previousFlats) + 1;
+                   
+                   newPairMat := ChangePairInAdjacencyMatrix(iteratorState!.pairCheckMatrix, nextFlat);
+                   
+                   newLastUsedAtom := Maximum(iteratorState!.lastAtom, Maximum(nextFlat));
+                   
+                   interestingAtoms := iteratorState!.interestingAtoms;
+                   
+                   if Length(interestingAtoms) < n then
+                       newInterestingAtoms := ChangeInterestingVector(nextFlat, iteratorState!.lastAtom, newLastUsedAtom, interestingAtoms);
+                   else
+                       newInterestingAtoms := interestingAtoms;
+                   fi;
+                   
+                   newInterestingAtoms := Set(newInterestingAtoms);
+                   
+                   if only_balanced_matroids then
+                       removeRow := ListOfMaximallyConnectedAtomsForBalancedness(n, newFlatList);
+                       newInterestingAtoms := Difference(newInterestingAtoms, removeRow);
+                   fi;
+                   
+                   blockLength := it!.blockLength;
+                   
+                   if (newLength  < blockLength ) then
+                       
+                       newIteratorState := rec(
+                                               k := flatCardinalityVector[newLength + 1],
+                                               els := [1 .. n],
+                                               previousFlat := nextFlat,
+                                               pairCheckMatrix := newPairMat,
+                                               n := n,
+                                               lastAtom := newLastUsedAtom,
+                                               interestingAtoms := newInterestingAtoms,
+                                               excessVector := newExcessVector,
+                                               wasteBudget := newWasteBudget,
+                                               previousFlats := newFlatList);
+                       
+                       newIteratorState := MakeReadOnlyObj( newIteratorState );
+                       
+                       newIter := IteratorOfFlatsPerBlock(newIteratorState);
+                       Push( stack, [newIter, newIteratorState]);
+                       
+                   else
+                       
+                       #check symmetry
+                       stabilizerPreviousBlocks := CopyPermGroup( it!.stabilizerPreviousBlocks );
+                       currentMinimalBlock := MinimalImage(stabilizerPreviousBlocks, newFlatList, OnSetsSets);
+                       
+                       if currentMinimalBlock in stack!.minimalBlocks then
+                           
+                           continue;
+                           
+                       else
+                           
+                           Append(stack!.minimalBlocks, [currentMinimalBlock]);
+                           
+                           newPreviousBlocks := Concatenation(previousBlocks, newFlatList);
+                           
+                           if Length(flatCardinalityVector) = blockLength then
+                               
+                               #return finished result
+                               completeAdjList := MinimalAdjList( n, newPreviousBlocks);
+                               
+                               return completeAdjList;
+                               
+                           elif Length(flatCardinalityVector) > blockLength and flatCardinalityVector[blockLength + 1] = 2 then
+                               
+                               #return finished results after appending the twos
+                               completeAdjList := AddFlatsConnectingPairsOfAtoms(n, newPreviousBlocks, newPairMat);
+                               completeAdjList := MinimalAdjList( n, newPreviousBlocks);
+                               
+                               return completeAdjList;
+                               
+                           else
+                               
+                               #return new Iterator for the next Block
+                               newMultiplicityVector := flatCardinalityVector{[(blockLength + 1) .. Length(flatCardinalityVector)]};
+                               
+                               newStabilizerPreviousBlocks := Stabilizer(stabilizerPreviousBlocks, newFlatList, OnSetsSets);
+                               
+                               newIteratorState := rec(
+                                                       k := flatCardinalityVector[newLength + 1],
+                                                       els := [1 .. n],
+                                                       previousFlat := [],
+                                                       pairCheckMatrix := newPairMat,
+                                                       n := n,
+                                                       lastAtom := newLastUsedAtom,
+                                                       interestingAtoms := newInterestingAtoms,
+                                                       excessVector := newExcessVector,
+                                                       wasteBudget := newWasteBudget,
+                                                       previousFlats := []);
+                               
+                               newIteratorState := MakeReadOnlyObj( newIteratorState );
+                               
+                               nextIter := IteratorOfNextBlock(n, newPreviousBlocks, newMultiplicityVector,
+                                                   newStabilizerPreviousBlocks, newIteratorState, only_balanced_matroids);
+                               
+                               return nextIter;
+                               
+                           fi;
+                       fi;
+                   fi;
+               od;
+              
+               # empty stack! i.e. iterator is done.
+               
+               return fail;
+               
+             end
+           );
+    
+    return IteratorByUncertainFunction(r, fail);
+    
+end );
+
+##
+InstallGlobalFunction( Rank3MatroidIterator,
+  function( n, flatCardinalityVector )
+    local only_balanced_matroids;
+    
+    only_balanced_matroids := ValueOption( "balanced" );
+    
+    if only_balanced_matroids = fail then
+        only_balanced_matroids := false;
+    fi;
+    
+    return IteratorOfNextBlock( n, [ ], flatCardinalityVector, SymmetricGroup( n ), [ ], only_balanced_matroids );
+    
+end );

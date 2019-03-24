@@ -31,3 +31,7 @@ DeclareGlobalFunction( "ListOfMaximallyConnectedAtomsForBalancedness" );
 DeclareGlobalFunction( "MinimalAdjList" );
 
 DeclareGlobalFunction( "IteratorOfFlatsPerBlock" );
+
+DeclareGlobalFunction( "IteratorOfNextBlock" );
+
+DeclareGlobalFunction( "Rank3MatroidIterator" );
