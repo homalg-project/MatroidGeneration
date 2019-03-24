@@ -34,4 +34,12 @@ DeclareGlobalFunction( "IteratorOfFlatsPerBlock" );
 
 DeclareGlobalFunction( "IteratorOfNextBlock" );
 
-DeclareGlobalFunction( "Rank3MatroidIterator" );
+#! @Description
+#!  Returns an iterator of all rank 3 matroids with
+#!  <A>n</A> atoms and given multiplicity vector <A>mult_vec</A>.
+#!  The function understands the Boolean option <A>balanced</A> and if true
+#!  computes only balanced matroids.
+#! @Arguments n, mult_vec
+#! @Returns an iterator
+DeclareOperation( "Rank3MatroidIterator",
+        [ IsInt, IsList ] );

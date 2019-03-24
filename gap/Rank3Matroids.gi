@@ -638,7 +638,10 @@ InstallGlobalFunction( IteratorOfNextBlock,
 end );
 
 ##
-InstallGlobalFunction( Rank3MatroidIterator,
+InstallMethod( Rank3MatroidIterator,
+        "for an integer and a list",
+        [ IsInt, IsList ],
+        
   function( n, multiplicity_vector )
     local only_balanced_matroids;
     
