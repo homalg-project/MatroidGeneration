@@ -166,7 +166,7 @@ end );
 ##
 InstallGlobalFunction( MinimalAdjList,
   function( n, adjList )
-    local stab, minAdjList, flatCardinalityVector, blockStart, blockEnd, nextBlock, minimalBlock, minPerm;
+    local stab, minAdjList, MultiplicityVector, blockStart, blockEnd, nextBlock, minimalBlock, minPerm;
     
     stab := SymmetricGroup( n );
     
@@ -174,20 +174,20 @@ InstallGlobalFunction( MinimalAdjList,
     
     Sort( adjList, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
     
-    flatCardinalityVector := List( adjList, Length );
+    MultiplicityVector := List( adjList, Length );
     
     blockStart := 1;
     blockEnd := 1;
     
-    while blockEnd <= Length( flatCardinalityVector ) do
+    while blockEnd <= Length( MultiplicityVector ) do
         
-        if blockEnd < Length( flatCardinalityVector ) then
+        if blockEnd < Length( MultiplicityVector ) then
             
-            while flatCardinalityVector[blockEnd] = flatCardinalityVector[blockEnd + 1] do
+            while MultiplicityVector[blockEnd] = MultiplicityVector[blockEnd + 1] do
                 
                 blockEnd := blockEnd + 1;
                 
-                if blockEnd = Length( flatCardinalityVector ) then
+                if blockEnd = Length( MultiplicityVector ) then
                     
                     break;
                     
@@ -211,7 +211,7 @@ InstallGlobalFunction( MinimalAdjList,
         
         minimalBlock := Set( minimalBlock );
         
-        if flatCardinalityVector[blockEnd] > 2 then
+        if MultiplicityVector[blockEnd] > 2 then
             
             stab := Stabilizer( stab, minimalBlock, OnSetsSets );
             
@@ -427,25 +427,25 @@ end );
 
 ##
 InstallGlobalFunction( IteratorOfNextBlock,
-  function(n, previousBlocks, flatCardinalityVector, stabilizerPreviousBlocks, iteratorState, only_balanced_matroids )
+  function(n, previousBlocks, MultiplicityVector, stabilizerPreviousBlocks, iteratorState, only_balanced_matroids )
     local blockLength, stack, excessVector, wasteBudget, r;
     
     previousBlocks := MakeReadOnlyObj( previousBlocks );
-    flatCardinalityVector := MakeReadOnlyObj( flatCardinalityVector );
+    MultiplicityVector := MakeReadOnlyObj( MultiplicityVector );
     stabilizerPreviousBlocks := MakeReadOnlyObj( stabilizerPreviousBlocks );
     iteratorState := MakeReadOnlyObj( iteratorState );
     
     stabilizerPreviousBlocks := CopyPermGroup( stabilizerPreviousBlocks);
     
-    blockLength := PositionProperty( flatCardinalityVector, k -> k < flatCardinalityVector[1]);
+    blockLength := PositionProperty( MultiplicityVector, k -> k < MultiplicityVector[1]);
     
     if blockLength = fail then
-        blockLength := Length( flatCardinalityVector );
+        blockLength := Length( MultiplicityVector );
     else
         blockLength := blockLength - 1;
     fi;
     
-    if flatCardinalityVector[1] = 2 then
+    if MultiplicityVector[1] = 2 then
         return Iterator( [SortedList( AddFlatsConnectingPairsOfAtoms(n, [], NullMat( n, n))) ]);
     fi;
     
@@ -459,13 +459,13 @@ InstallGlobalFunction( IteratorOfNextBlock,
         excessVector := List([1 .. n], l -> ((n - 1) / 2));
         
         if only_balanced_matroids then
-            wasteBudget := FlatExcessOfMultiplicityVector(flatCardinalityVector) - Sum(excessVector);
+            wasteBudget := FlatExcessOfMultiplicityVector(MultiplicityVector) - Sum(excessVector);
         else
             wasteBudget := 10*n^3;
         fi;
         
         iteratorState := rec(
-                             k := flatCardinalityVector[1],
+                             k := MultiplicityVector[1],
                              els:= [1..n],
                              previousFlat := [],
                              pairCheckMatrix := NullMat( n, n),
@@ -515,7 +515,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                    
                    if only_balanced_matroids then
                        newWasteBudget := FlatExcessOfMultiplicityVector(
-                                                 flatCardinalityVector{[(Length(previousFlats)+2) .. Length(flatCardinalityVector)]}) - Sum(newExcessVector);
+                                                 MultiplicityVector{[(Length(previousFlats)+2) .. Length(MultiplicityVector)]}) - Sum(newExcessVector);
                    else
                        newWasteBudget := 10*n^3;
                    fi;
@@ -548,7 +548,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                    if (newLength  < blockLength ) then
                        
                        newIteratorState := rec(
-                                               k := flatCardinalityVector[newLength + 1],
+                                               k := MultiplicityVector[newLength + 1],
                                                els := [1 .. n],
                                                previousFlat := nextFlat,
                                                pairCheckMatrix := newPairMat,
@@ -580,14 +580,14 @@ InstallGlobalFunction( IteratorOfNextBlock,
                            
                            newPreviousBlocks := Concatenation(previousBlocks, newFlatList);
                            
-                           if Length(flatCardinalityVector) = blockLength then
+                           if Length(MultiplicityVector) = blockLength then
                                
                                #return finished result
                                completeAdjList := MinimalAdjList( n, newPreviousBlocks);
                                
                                return completeAdjList;
                                
-                           elif Length(flatCardinalityVector) > blockLength and flatCardinalityVector[blockLength + 1] = 2 then
+                           elif Length(MultiplicityVector) > blockLength and MultiplicityVector[blockLength + 1] = 2 then
                                
                                #return finished results after appending the twos
                                completeAdjList := AddFlatsConnectingPairsOfAtoms(n, newPreviousBlocks, newPairMat);
@@ -598,12 +598,12 @@ InstallGlobalFunction( IteratorOfNextBlock,
                            else
                                
                                #return new Iterator for the next Block
-                               newMultiplicityVector := flatCardinalityVector{[(blockLength + 1) .. Length(flatCardinalityVector)]};
+                               newMultiplicityVector := MultiplicityVector{[(blockLength + 1) .. Length(MultiplicityVector)]};
                                
                                newStabilizerPreviousBlocks := Stabilizer(stabilizerPreviousBlocks, newFlatList, OnSetsSets);
                                
                                newIteratorState := rec(
-                                                       k := flatCardinalityVector[newLength + 1],
+                                                       k := MultiplicityVector[newLength + 1],
                                                        els := [1 .. n],
                                                        previousFlat := [],
                                                        pairCheckMatrix := newPairMat,
@@ -639,7 +639,7 @@ end );
 
 ##
 InstallGlobalFunction( Rank3MatroidIterator,
-  function( n, flatCardinalityVector )
+  function( n, multiplicity_vector )
     local only_balanced_matroids;
     
     only_balanced_matroids := ValueOption( "balanced" );
@@ -648,6 +648,6 @@ InstallGlobalFunction( Rank3MatroidIterator,
         only_balanced_matroids := false;
     fi;
     
-    return IteratorOfNextBlock( n, [ ], flatCardinalityVector, SymmetricGroup( n ), [ ], only_balanced_matroids );
+    return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], only_balanced_matroids );
     
 end );
