@@ -1,5 +1,5 @@
 #
-# Tools
+# MatroidGeneration: Rank 3 matroids
 #
 # Declarations
 #

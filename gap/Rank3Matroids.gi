@@ -1,5 +1,5 @@
 #
-# Rank3Matroids: Rank 3 matroids
+# MatroidGeneration: Rank 3 matroids
 #
 # Implementations
 #
