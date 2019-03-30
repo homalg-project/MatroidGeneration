@@ -12,4 +12,6 @@ else
 #Info( InfoWarning, 1, "Warning: ParallelyEvaluateRecursiveIterator can only be load in HPCGAP" );
 fi;
 
+ReadPackage( "MatroidGeneration", "gap/Database.gd");
+
 ReadPackage( "MatroidGeneration", "gap/Tools.gd");

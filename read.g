@@ -10,4 +10,6 @@ if IsHPCGAP then
 ReadPackage( "MatroidGeneration", "gap/ptree.gi");
 fi;
 
+ReadPackage( "MatroidGeneration", "gap/Database.gi");
+
 ReadPackage( "MatroidGeneration", "gap/Tools.gi");
