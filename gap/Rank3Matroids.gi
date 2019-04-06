@@ -12,7 +12,7 @@ InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
     balanced := ValueOption( "balanced" );
     
     if not balanced = true then
-        balanced := fail;
+        balanced := false;
     fi;
     
     bino := Binomial(n, 2);
