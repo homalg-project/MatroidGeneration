@@ -1,0 +1,10 @@
+LoadPackage( "MatroidGeneration" );
+db := AttachMatroidsDatabase();
+d := db.matroids_split.document("6b4b8282e9790adb5f5250776399b26b5df0eb8e");
+LoadPackage( "alcove", ">= 2019-03-09" );
+matroid := MatroidByCoatomsNC( d.n, 3, d.adjList );
+#homalgIOMode( "f" );
+ZZ := HomalgRingOfIntegersInSingular( );
+M := ModuliSpaceOfMatroidByEquationsAndInequations( matroid, ZZ );
+LoadPackage( "ZariskiFrames", ">= 2019.04.12" );
+m := DistinguishedQuasiAffineSet( M );
