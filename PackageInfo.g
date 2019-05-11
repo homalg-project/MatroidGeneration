@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2019.04.17", ## Mohamed's version
+                   "2019.04.18", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.12.17", ## Lukas's version
                    ] ),
@@ -93,7 +93,7 @@ Dependencies := rec(
                    [ "images", ">= 1.1.0" ],
                    [ "ParallelizedIterators", ">= 2018.12.09" ],
                    [ "ArangoDBInterface", ">= 2018.12.09" ],
-                   [ "alcove", ">= 2019-03-09" ],
+                   [ "alcove", ">= 2019-03-11" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
