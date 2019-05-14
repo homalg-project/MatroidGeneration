@@ -48,4 +48,4 @@ DeclareGlobalFunction( "IteratorOfNextBlock" );
 #! @Returns an iterator
 DeclareOperation( "Rank3MatroidIterator",
         [ IsInt, IsList ] );
-#! @InsertSystem Rank3MatroidIterator
+#! @InsertChunk Rank3MatroidIterator
