@@ -1,4 +1,4 @@
-#! @System Rank3MatroidIterator
+#! @Chunk Rank3MatroidIterator
 
 LoadPackage( "MatroidGeneration" );
 
