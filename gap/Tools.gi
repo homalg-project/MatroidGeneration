@@ -12,7 +12,7 @@ InstallMethod( MatroidByCoatomsNC,
   function( d )
     local matroid;
     
-    matroid := MatroidByCoatomsNC( d.n, d.rank, d.adjList );
+    matroid := MatroidByCoatomsNC( d.NumberOfAtoms, d.Rank, d.ListOfCoatoms );
     
     matroid!.document := d;
     
