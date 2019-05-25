@@ -1,6 +1,6 @@
 LoadPackage( "MatroidGeneration" );
 db := AttachMatroidsDatabase();
-d := db.matroids_split.document("ca2e1d09990857222f37305ab09d9c5e40522af5");
+d := db.matroids_split_public.document("ec7965794e6c0cc2766eeb2b8557fa149a3f8fc9");
 matroid := MatroidByCoatomsNC( d );
 #homalgIOMode( "f" );
 ZZ := HomalgRingOfIntegersInSingular( );
