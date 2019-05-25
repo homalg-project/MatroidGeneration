@@ -14,17 +14,26 @@ InstallValue( MATROIDS_DB,
                              "--server.username", "matroid",
                              "--server.password", "matroid",
                              "--server.database", "MatroidsDB",
-                             "--server.endpoint", ~.Server ],
+                             "--server.endpoint" ],
                            )
                            );
 
 ##
 InstallGlobalFunction( AttachMatroidsDatabase,
-  function( arg... );
+  function( arg... )
+    local server, credentials;
     
-    Info( InfoArangoDB, 1, "Connecting with ", MATROIDS_DB.Server );
+    if ValueOption( "localhost" ) = true then
+        server := "http+tcp://127.0.0.1:8529";
+    else
+        server := MATROIDS_DB.Server;
+    fi;
     
-    return AttachAnArangoDatabase( MATROIDS_DB.Credentials );
+    Info( InfoArangoDB, 1, "Connecting to ", server );
+    
+    credentials := Concatenation( MATROIDS_DB.Credentials, [ server ] );
+    
+    return AttachAnArangoDatabase( credentials );
     
 end );
 
