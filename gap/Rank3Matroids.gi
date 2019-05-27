@@ -7,23 +7,25 @@
 ##
 InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
   function( n )
-    local balanced, bino, result, maxExponentRange, exp1, exp2, b2, maxMultiplicity, numberOfCoatoms, MultiplicityVectors, currentMultiplicityVector;
+    local balanced_exponents, balanced_multiplicities, bino, result, maxExponentRange, exp1, exp2, b2, maxMultiplicity, numberOfCoatoms, MultiplicityVectors, currentMultiplicityVector;
     
-    balanced := ValueOption( "balanced" );
+    balanced_exponents := ValueOption( "balanced_exponents" );
+    if not balanced_exponents = true then
+        balanced_exponents := false;
+    fi;
     
-    if not balanced = true then
-        balanced := false;
+    balanced_multiplicities := ValueOption( "balanced_multiplicities" );
+    if not balanced_multiplicities = true then
+        balanced_multiplicities := false;
     fi;
     
     bino := Binomial(n, 2);
     result := [];
     
-    if balanced then
+    if balanced_exponents then
         maxExponentRange := [ Int((n - 1) / 2) ];
-        maxMultiplicity := Int(n/2)-1;
     else
         maxExponentRange := [ Int((n - 1) / 2) .. (n - 2) ];
-        maxMultiplicity := n - 1;
     fi;
     
     for exp1 in maxExponentRange do
@@ -33,6 +35,12 @@ InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
         
         # The quadratic term of the charateristic polynomial, i.e. b_2(A)
         b2 := exp1 + exp2 + ( exp1 * exp2 );
+        
+        if balanced_multiplicities then
+            maxMultiplicity := Minimum( exp1, exp2 ) - 1; # The multiplicities need to be strictly smaller than the smaller exponent.
+        else
+            maxMultiplicity := n - 1;
+        fi;
         
         for numberOfCoatoms in [ n .. b2 ] do
             # This makes sure the characteristic polynomial splits with roots exp1, exp2
