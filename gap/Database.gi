@@ -7,7 +7,7 @@
 ##
 InstallValue( MATROIDS_DB,
         rec(
-            Server := "http+tcp://matroid.mathematik.uni-siegen.de:8529",
+            Server := "http+ssl://matroid.mathematik.uni-siegen.de:443",
             Credentials := [ "--console.auto-complete", "false",
                              "--console.colors", "false",
                              "--console.pretty-print", "false",
