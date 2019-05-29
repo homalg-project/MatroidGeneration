@@ -435,7 +435,7 @@ end );
 
 ##
 InstallGlobalFunction( IteratorOfNextBlock,
-  function(n, previousBlocks, MultiplicityVector, stabilizerPreviousBlocks, iteratorState, only_balanced_matroids )
+  function(n, previousBlocks, MultiplicityVector, stabilizerPreviousBlocks, iteratorState, weakly_balanced )
     local blockLength, stack, excessVector, wasteBudget, r;
     
     previousBlocks := MakeReadOnlyObj( previousBlocks );
@@ -466,7 +466,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
         #this makes sure the matroids are balanced with respect to the atoms
         excessVector := List([1 .. n], l -> ((n - 1) / 2));
         
-        if only_balanced_matroids then
+        if weakly_balanced then
             wasteBudget := FlatExcessOfMultiplicityVector(MultiplicityVector) - Sum(excessVector);
         else
             wasteBudget := 10*n^3;
@@ -492,7 +492,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
              stack := stack,
              blockLength := blockLength,
              stabilizerPreviousBlocks := stabilizerPreviousBlocks,
-             only_balanced_matroids := only_balanced_matroids,
+             weakly_balanced := weakly_balanced,
              
              locally_uniform := true,
              
@@ -521,7 +521,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                    
                    newExcessVector := ChangeExcessCounter(iteratorState!.excessVector, nextFlat);
                    
-                   if only_balanced_matroids then
+                   if weakly_balanced then
                        newWasteBudget := FlatExcessOfMultiplicityVector(
                                                  MultiplicityVector{[(Length(previousFlats)+2) .. Length(MultiplicityVector)]}) - Sum(newExcessVector);
                    else
@@ -546,7 +546,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                    
                    newInterestingAtoms := Set(newInterestingAtoms);
                    
-                   if only_balanced_matroids then
+                   if weakly_balanced then
                        removeRow := ListOfMaximallyConnectedAtomsForBalancedness(n, newFlatList);
                        newInterestingAtoms := Difference(newInterestingAtoms, removeRow);
                    fi;
@@ -625,7 +625,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                                newIteratorState := MakeReadOnlyObj( newIteratorState );
                                
                                nextIter := IteratorOfNextBlock(n, newPreviousBlocks, newMultiplicityVector,
-                                                   newStabilizerPreviousBlocks, newIteratorState, only_balanced_matroids);
+                                                   newStabilizerPreviousBlocks, newIteratorState, weakly_balanced);
                                
                                return nextIter;
                                
@@ -651,16 +651,16 @@ InstallMethod( Rank3MatroidIterator,
         [ IsInt, IsList ],
         
   function( n, multiplicity_vector )
-    local only_balanced_matroids;
+    local weakly_balanced;
     
-    only_balanced_matroids := ValueOption( "balanced" );
+    weakly_balanced := ValueOption( "weakly_balanced" );
     
-    if only_balanced_matroids = fail then
-        only_balanced_matroids := false;
+    if not weakly_balanced = true then
+        weakly_balanced := false;
     fi;
     
     multiplicity_vector := FlatenMultiplicityVector( multiplicity_vector );
     
-    return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], only_balanced_matroids );
+    return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], weakly_balanced );
     
 end );
