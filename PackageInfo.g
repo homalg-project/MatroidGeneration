@@ -13,7 +13,7 @@ Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
                    "2019.05.01", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.05.28", ## Lukas's version
+                   "2019.05.29", ## Lukas's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},

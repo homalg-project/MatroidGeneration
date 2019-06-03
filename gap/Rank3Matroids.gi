@@ -435,7 +435,7 @@ end );
 
 ##
 InstallGlobalFunction( IteratorOfNextBlock,
-  function(n, previousBlocks, MultiplicityVector, stabilizerPreviousBlocks, iteratorState, weakly_balanced )
+  function(n, previousBlocks, MultiplicityVector, stabilizerPreviousBlocks, iteratorState, weakly_balanced, balanced_atoms_in_block )
     local blockLength, stack, excessVector, wasteBudget, r;
     
     previousBlocks := MakeReadOnlyObj( previousBlocks );
@@ -493,6 +493,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
              blockLength := blockLength,
              stabilizerPreviousBlocks := stabilizerPreviousBlocks,
              weakly_balanced := weakly_balanced,
+             balanced_atoms_in_block := balanced_atoms_in_block,
              
              locally_uniform := true,
              
@@ -546,7 +547,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                    
                    newInterestingAtoms := Set(newInterestingAtoms);
                    
-                   if weakly_balanced then
+                   if weakly_balanced or balanced_atoms_in_block then
                        removeRow := ListOfMaximallyConnectedAtomsForBalancedness(n, newFlatList);
                        newInterestingAtoms := Difference(newInterestingAtoms, removeRow);
                    fi;
@@ -625,7 +626,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                                newIteratorState := MakeReadOnlyObj( newIteratorState );
                                
                                nextIter := IteratorOfNextBlock(n, newPreviousBlocks, newMultiplicityVector,
-                                                   newStabilizerPreviousBlocks, newIteratorState, weakly_balanced);
+                                                   newStabilizerPreviousBlocks, newIteratorState, weakly_balanced, balanced_atoms_in_block);
                                
                                return nextIter;
                                
@@ -651,16 +652,20 @@ InstallMethod( Rank3MatroidIterator,
         [ IsInt, IsList ],
         
   function( n, multiplicity_vector )
-    local weakly_balanced;
+    local weakly_balanced, balanced_atoms_in_block;
     
     weakly_balanced := ValueOption( "weakly_balanced" );
-    
     if not weakly_balanced = true then
         weakly_balanced := false;
     fi;
     
+    balanced_atoms_in_block := ValueOption( "balanced_atoms_in_block");
+    if not balanced_atoms_in_block = false then
+        balanced_atoms_in_block := true;
+    fi;
+    
     multiplicity_vector := FlatenMultiplicityVector( multiplicity_vector );
     
-    return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], weakly_balanced );
+    return IteratorOfNextBlock( n, [ ], multiplicity_vector, SymmetricGroup( n ), [ ], weakly_balanced, balanced_atoms_in_block );
     
 end );
