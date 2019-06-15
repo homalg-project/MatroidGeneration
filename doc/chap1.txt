@@ -1,0 +1,56 @@
+  
+  [1X1 [33X[0;0YGenerate low-rank matroids[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YRank 3 matroids[133X[101X
+  
+  [1X1.1-1 GenerateMultiplicityVectorsOfRank3SplitMatroids[101X
+  
+  [33X[1;0Y[29X[2XGenerateMultiplicityVectorsOfRank3SplitMatroids[102X( [3Xn[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of listlists[133X
+  
+  [33X[0;0YCompute  the  list  of  multiplicity vectors of rank 3 split matroids with [3Xn[103X
+  atoms.  The  function  understands  the  Boolean option [3Xbalanced[103X and if true
+  computes only balanced multiplicity vectors.[133X
+  
+  [1X1.1-2 Rank3MatroidIterator[101X
+  
+  [33X[1;0Y[29X[2XRank3MatroidIterator[102X( [3Xn[103X, [3Xmult_vec[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan iterator[133X
+  
+  [33X[0;0YReturns  a  recursive iterator [10Xriter[110X of all rank 3 matroids with [3Xn[103X atoms and
+  given  multiplicity  vector  [3Xmult_vec[103X.  The recursive iterator [10Xriter[110X can for
+  example  be  evaluated  in  [10Xhpcgap[110X using [10XParallelyEvaluateRecursiveIterator(
+  state,  nr_workers,  riter,  channel_of_matroids  );[110X,  where the user should
+  pre-define:[133X
+  
+  [30X    [33X[0;6Y[10Xstate := rec( );[110X[133X
+  
+  [30X    [33X[0;6Y[10Xchannel_of_matroids  :=  CreateChannel(10^6);[110X The function understands
+        the  Boolean  option  [3Xbalanced[103X  and  if  true  computes  only balanced
+        matroids.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xmult_vec := [ [ 2, 8 ], [ 3, 9 ], [ 5, 2 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xriter := Rank3MatroidIterator( 11, mult_vec );[127X[104X
+    [4X[28X<iterator>[128X[104X
+    [4X[25Xgap>[125X [27Xstate := rec( );;[127X[104X
+    [4X[25Xgap>[125X [27Xchannel_of_matroids := CreateChannel(10^6);;[127X[104X
+    [4X[25Xgap>[125X [27XParallelyEvaluateRecursiveIterator( state, 8, riter, channel_of_matroids );[127X[104X
+    [4X[28Xrec( shutdown := function(  ) ... end )[128X[104X
+    [4X[25Xgap>[125X [27Xcoatoms1 := ReceiveChannel( channel_of_matroids );;[127X[104X
+    [4X[25Xgap>[125X [27Xcoatoms1[1];[127X[104X
+    [4X[28X[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11 ], [ 2, 6, 10 ],[128X[104X
+    [4X[28X  [ 2, 7, 11 ], [ 3, 6, 11 ], [ 3, 7, 10 ], [ 4, 8, 10 ], [ 4, 9, 11 ],[128X[104X
+    [4X[28X  [ 5, 8, 11 ], [ 5, 9, 10 ], [ 2, 8 ], [ 2, 9 ], [ 3, 8 ], [ 3, 9 ],[128X[104X
+    [4X[28X  [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xcoatoms2 := ReceiveChannel( channel_of_matroids );;[127X[104X
+    [4X[25Xgap>[125X [27Xcoatoms2[1];[127X[104X
+    [4X[28X[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11 ], [ 2, 6, 10 ],[128X[104X
+    [4X[28X  [ 2, 7, 11 ], [ 3, 6, 11 ], [ 3, 8, 10 ], [ 4, 7, 10 ], [ 4, 9, 11 ],[128X[104X
+    [4X[28X  [ 5, 8, 11 ], [ 5, 9, 10 ], [ 2, 8 ], [ 2, 9 ], [ 3, 7 ], [ 3, 9 ],[128X[104X
+    [4X[28X  [ 4, 6 ], [ 4, 8 ], [ 5, 6 ], [ 5, 7 ] ][128X[104X
+    [4X[25Xgap>[125X [27XReceiveChannel( channel_of_matroids );[127X[104X
+    [4X[28Xfail[128X[104X
+  [4X[32X[104X
+  

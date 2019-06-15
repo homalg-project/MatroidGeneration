@@ -1,6 +1,6 @@
 name: MatroidGeneration
-version: 2019.06.04
-date: 04/06/2019
+version: 2019.06.05
+date: 05/06/2019
 description: Generate low-rank matroids
 
 authors:
@@ -34,13 +34,13 @@ needed-pkgs:
       version: ">= 2019-03-11"
       url: "https://github.com/martin-leuner/alcove"
 
-www: https://github.com/homalg-project/MatroidGeneration
-readme: MatroidGenerationREADME.md
-packageinfo: https://github.com/homalg-project/MatroidGenerationPackageInfo.g
+www: https://homalg-project.github.io/MatroidGeneration
+readme: README.md
+packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2019.06.04/MatroidGeneration-2019.06.04.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2019.06.05/MatroidGeneration-2019.06.05.tar.gz
 
 abstract: 
 

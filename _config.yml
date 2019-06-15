@@ -1,2 +1,5 @@
-markdown: kramdown
-highlighter: rouge
+markdown:	kramdown
+highlighter:	rouge
+
+baseurl:	/MatroidGeneration
+repository:	homalg-project/MatroidGeneration

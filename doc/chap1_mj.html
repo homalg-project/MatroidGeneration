@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (MatroidGeneration) - Chapter 1: Generate low-rank matroids</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7872DDC27D1264A8" name="X7872DDC27D1264A8"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7872DDC27D1264A8">1 <span class="Heading">Generate low-rank matroids</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X83DDBDA87D904A0E">1.1 <span class="Heading">Rank 3 matroids</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D092CA77E7C6BF8">1.1-1 GenerateMultiplicityVectorsOfRank3SplitMatroids</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X863AF1987B2EA148">1.1-2 Rank3MatroidIterator</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Generate low-rank matroids</span></h3>
+
+<p><a id="X83DDBDA87D904A0E" name="X83DDBDA87D904A0E"></a></p>
+
+<h4>1.1 <span class="Heading">Rank 3 matroids</span></h4>
+
+<p><a id="X7D092CA77E7C6BF8" name="X7D092CA77E7C6BF8"></a></p>
+
+<h5>1.1-1 GenerateMultiplicityVectorsOfRank3SplitMatroids</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GenerateMultiplicityVectorsOfRank3SplitMatroids</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of listlists</p>
+
+<p>Compute the list of multiplicity vectors of rank 3 split matroids with <var class="Arg">n</var> atoms. The function understands the Boolean option <var class="Arg">balanced</var> and if true computes only balanced multiplicity vectors.</p>
+
+<p><a id="X863AF1987B2EA148" name="X863AF1987B2EA148"></a></p>
+
+<h5>1.1-2 Rank3MatroidIterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Rank3MatroidIterator</code>( <var class="Arg">n</var>, <var class="Arg">mult_vec</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an iterator</p>
+
+<p>Returns a recursive iterator <code class="code">riter</code> of all rank 3 matroids with <var class="Arg">n</var> atoms and given multiplicity vector <var class="Arg">mult_vec</var>. The recursive iterator <code class="code">riter</code> can for example be evaluated in <code class="code">hpcgap</code> using <code class="code">ParallelyEvaluateRecursiveIterator( state, nr_workers, riter, channel_of_matroids );</code>, where the user should pre-define:</p>
+
+
+<ul>
+<li><p><code class="code">state := rec( );</code></p>
+
+</li>
+<li><p><code class="code">channel_of_matroids := CreateChannel(10^6);</code> The function understands the Boolean option <var class="Arg">balanced</var> and if true computes only balanced matroids.</p>
+
+</li>
+</ul>
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mult_vec := [ [ 2, 8 ], [ 3, 9 ], [ 5, 2 ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">riter := Rank3MatroidIterator( 11, mult_vec );</span>
+&lt;iterator&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">state := rec( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">channel_of_matroids := CreateChannel(10^6);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ParallelyEvaluateRecursiveIterator( state, 8, riter, channel_of_matroids );</span>
+rec( shutdown := function(  ) ... end )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coatoms1 := ReceiveChannel( channel_of_matroids );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coatoms1[1];</span>
+[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11 ], [ 2, 6, 10 ],
+  [ 2, 7, 11 ], [ 3, 6, 11 ], [ 3, 7, 10 ], [ 4, 8, 10 ], [ 4, 9, 11 ],
+  [ 5, 8, 11 ], [ 5, 9, 10 ], [ 2, 8 ], [ 2, 9 ], [ 3, 8 ], [ 3, 9 ],
+  [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coatoms2 := ReceiveChannel( channel_of_matroids );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coatoms2[1];</span>
+[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11 ], [ 2, 6, 10 ],
+  [ 2, 7, 11 ], [ 3, 6, 11 ], [ 3, 8, 10 ], [ 4, 7, 10 ], [ 4, 9, 11 ],
+  [ 5, 8, 11 ], [ 5, 9, 10 ], [ 2, 8 ], [ 2, 9 ], [ 3, 7 ], [ 3, 9 ],
+  [ 4, 6 ], [ 4, 8 ], [ 5, 6 ], [ 5, 7 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReceiveChannel( channel_of_matroids );</span>
+fail
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

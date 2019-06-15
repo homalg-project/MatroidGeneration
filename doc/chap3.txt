@@ -1,0 +1,18 @@
+  
+  [1X3 [33X[0;0YMatroidGeneration automatic generated documentation[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YMatroidGeneration automatic generated documentation of methods[133X[101X
+  
+  [1X3.1-1 MatroidByCoatomsNC[101X
+  
+  [33X[1;0Y[29X[2XMatroidByCoatomsNC[102X( [3Xd[103X ) [32X operation[133X
+  
+  [33X[0;0YConstruct the matroid defined by the entries[133X
+  
+  [30X    [33X[0;6Yd.NumberOfAtoms[133X
+  
+  [30X    [33X[0;6Yd.Rank[133X
+  
+  [30X    [33X[0;6Yd.ListOfCoatoms (the maximal proper flats) of the database document [3Xd[103X.[133X
+  

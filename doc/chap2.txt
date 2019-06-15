@@ -1,0 +1,24 @@
+  
+  [1X2 [33X[0;0YThe database of matroids[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YThe database of matroids[133X[101X
+  
+  [1X2.1-1 AttachMatroidsDatabase[101X
+  
+  [33X[1;0Y[29X[2XAttachMatroidsDatabase[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya an Arango database[133X
+  
+  [33X[0;0YAttach       the       Arango       database       of       matroids      at
+  [10Xhttp://matroid.mathematik.uni-siegen.de:8529[110X.[133X
+  
+  [1X2.1-2 EquationsAndInequationsOfModuliSpaceOfMatroid[101X
+  
+  [33X[1;0Y[29X[2XEquationsAndInequationsOfModuliSpaceOfMatroid[102X( [3Xd[103X, [3XZZ[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YGet the list of equations and inequations defining the possibly empty moduli
+  space  of  vector matroids of the matroid over the homalg ring [3XZZ[103X defined by
+  the  document  [3Xd[103X.  This is a quasi-affine representation of the (abstractly)
+  affine moduli space.[133X
+  
