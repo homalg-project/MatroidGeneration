@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2019.05.01", ## Mohamed's version
+                   "2019.06.05", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06.04", ## Lukas's version
                    ] ),
@@ -56,9 +56,9 @@ SourceRepository := rec(
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
