@@ -413,7 +413,7 @@ cp "$TMP_DIR/$BASENAME/PackageInfo.g" .
 rm -rf doc/ htm/
 if [ -e "$TMP_DIR/$BASENAME/doc/chap0.html" ] ; then
     mkdir -p doc/
-    cp "$TMP_DIR/$BASENAME/doc"/*.{css,html,js,txt} doc/
+    cp "$TMP_DIR/$BASENAME/doc"/*.{css,html,js,txt,png} doc/
 fi
 if [ -d "$TMP_DIR/$BASENAME/htm/" ] ; then
     cp -r "$TMP_DIR/$BASENAME/htm/" .
