@@ -214,7 +214,7 @@ The database collection `matroids_split_public` contains the values of the follo
 The first intended use case is to verify Terao's freeness conjecture for rank 3 matroids with 14 atoms.
 This can be either done by a query in the web interface or in GAP.
 
-For details see our paper "[On the generation of rank 3 simple matroids with an application to Terao's freeness conjecture]()".
+For details see our paper "[On the generation of rank 3 simple matroids with an application to Terao's freeness conjecture](http://arxiv.org/abs/1907.01073)".
 
 ### in the web interface using filters
 After choosing the collection `COLLECTION > matroids_split_public` press filter button
