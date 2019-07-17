@@ -45,7 +45,7 @@ The package can also be used to access the collection directly.
 ```gap
 gap> LoadPackage( "MatroidGeneration" );
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  AutoDoc 2019.05.20 (Generate documentation from GAP source code)
+Loading  AutoDoc 2019.07.03 (Generate documentation from GAP source code)
 by Sebastian Gutsche (https://algebra.mathematik.uni-siegen.de/gutsche/) and
    Max Horn (https://www.quendi.de/math).
 Homepage: https://gap-packages.github.io/AutoDoc
@@ -81,7 +81,7 @@ by Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/),
 Homepage: https://gap-packages.github.io/images/
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatricesForHomalg 2019.06.03 (Lazy evaluated matrices with clever operations for the homalg project)
+Loading  MatricesForHomalg 2019.06.04 (Lazy evaluated matrices with clever operations for the homalg project)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
    Markus Lange-Hegermann (https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html),
    Martin Leuner (http://wwwb.math.rwth-aachen.de/Mitarbeiter/leuner.php), and
@@ -142,7 +142,7 @@ by Martin Leuner (http://wwwb.math.rwth-aachen.de/~leuner/).
 Homepage: https://github.com/martin-leuner/alcove
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatroidGeneration 2019.06.06 (Generate low-rank matroids)
+Loading  MatroidGeneration 2019.06.07 (Generate low-rank matroids)
 by Mohamed Barakat (https://mohamed-barakat.github.io) and
    Lukas Kühne (https://github.com/lukaskuehne).
 Homepage: https://homalg-project.github.io/MatroidGeneration
@@ -223,9 +223,9 @@ and enter the following filter values (which will be combined with the AND conne
 Rank == 3
 NumberOfAtoms == 14
 IsRepresentable == true
-IsUniquelyRepresentableOverZ == false
 IsInductivelyFree == false
 IsStronglyBalanced == true
+IsUniquelyRepresentableOverZ == false
 ```
 and then press ENTER. The result will be `No documents`.
 
@@ -242,9 +242,9 @@ FOR d IN matroids_split_public
   FILTER d.Rank == 3 &&
          d.NumberOfAtoms == 14 &&
          d.IsRepresentable == true &&
-         d.IsUniquelyRepresentableOverZ == false &&
          d.IsInductivelyFree == false &&
-	 d.IsStronglyBalanced == true
+         d.IsStronglyBalanced == true &&
+         d.IsUniquelyRepresentableOverZ == false
   SORT d.NumberOfAtoms, d.Characteristic, d.DimensionOverZ DESC
   RETURN { NumberOfAtoms : d.NumberOfAtoms,
            Characteristic: d.Characteristic,
@@ -267,14 +267,15 @@ FOR d IN matroids_split_public
 gap> LoadPackage( "MatroidGeneration" );
 true
 gap> db := AttachMatroidsDatabase();
+#I  Connecting to http+ssl://matroid.mathematik.uni-siegen.de:443
 [object ArangoDatabase "MatroidsDB"]
 gap> q := QueryDatabase( rec(
 >      	  Rank := 3,
 >      	  NumberOfAtoms := 14,
 >      	  IsRepresentable := true,
->	  IsUniquelyRepresentableOverZ := false,
 >	  IsInductivelyFree := false,
->	  IsStronglyBalanced := true ),
+>	  IsStronglyBalanced := true,
+>	  IsUniquelyRepresentableOverZ := false ),
 > db.matroids_split_public );
 [ArangoQueryCursor in [object ArangoDatabase "MatroidsDB"]]
 gap> q.count();
