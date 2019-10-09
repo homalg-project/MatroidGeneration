@@ -38,10 +38,12 @@ DeclareGlobalFunction( "IteratorOfNextBlock" );
 #!  Returns a recursive iterator <C>riter</C> of all rank 3 matroids with
 #!  <A>n</A> atoms and given multiplicity vector <A>mult_vec</A>.
 #!  The recursive iterator <C>riter</C> can for example be evaluated in <C>hpcgap</C> using
-#!  <C>ParallelyEvaluateRecursiveIterator( state, nr_workers, riter, channel_of_matroids );</C>,
+#!  * <C>ParallelyEvaluateRecursiveIterator( state, nr_workers, riter, channel_of_matroids );</C>
+#!  
 #!  where the user should pre-define:
 #!  * <C>state := rec( );</C>
 #!  * <C>channel_of_matroids := CreateChannel(10^6);</C>
+#!  
 #!  The function understands the Boolean option <A>balanced</A> and if true
 #!  computes only balanced matroids.
 #! @Arguments n, mult_vec
