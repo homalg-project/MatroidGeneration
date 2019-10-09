@@ -28,7 +28,7 @@ DeclareGlobalFunction( "FlatExcessOfMultiplicityVector" );
 
 DeclareGlobalFunction( "ListOfMaximallyConnectedAtomsForBalancedness" );
 
-DeclareGlobalFunction( "MinimalAdjList" );
+DeclareGlobalFunction( "MinimalListOfCoatoms" );
 
 DeclareGlobalFunction( "IteratorOfFlatsPerBlock" );
 

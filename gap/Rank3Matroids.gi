@@ -172,17 +172,17 @@ InstallGlobalFunction( ListOfMaximallyConnectedAtomsForBalancedness,
 end );
 
 ##
-InstallGlobalFunction( MinimalAdjList,
-  function( n, adjList )
-    local stab, minAdjList, MultiplicityVector, blockStart, blockEnd, nextBlock, minimalBlock, minPerm;
+InstallGlobalFunction( MinimalListOfCoatoms,
+  function( n, coatoms )
+    local stab, min_coatoms, MultiplicityVector, blockStart, blockEnd, nextBlock, minimalBlock, minPerm;
     
     stab := SymmetricGroup( n );
     
-    minAdjList := [ ];
+    min_coatoms := [ ];
     
-    Sort( adjList, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
+    Sort( coatoms, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
     
-    MultiplicityVector := List( adjList, Length );
+    MultiplicityVector := List( coatoms, Length );
     
     blockStart := 1;
     blockEnd := 1;
@@ -205,7 +205,7 @@ InstallGlobalFunction( MinimalAdjList,
             
         fi;
         
-        nextBlock := adjList{[ blockStart .. blockEnd]};
+        nextBlock := coatoms{[ blockStart .. blockEnd]};
         
         nextBlock := Set( nextBlock );
         
@@ -213,9 +213,9 @@ InstallGlobalFunction( MinimalAdjList,
         
         minPerm := MinimalImagePerm( stab, nextBlock, OnSetsSets );
         
-        adjList := OnSetsSets( adjList, minPerm );
+        coatoms := OnSetsSets( coatoms, minPerm );
         
-        Sort( adjList, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
+        Sort( coatoms, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
         
         minimalBlock := Set( minimalBlock );
         
@@ -225,16 +225,16 @@ InstallGlobalFunction( MinimalAdjList,
             
         fi;
         
-        Append( minAdjList, minimalBlock );
+        Append( min_coatoms, minimalBlock );
     
         blockStart := blockEnd + 1;
         blockEnd := blockStart;
         
     od;
     
-    Sort( minAdjList, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
+    Sort( min_coatoms, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
     
-    return minAdjList;
+    return min_coatoms;
     
 end );
 

@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2019.06.07", ## Mohamed's version
+                   "2019.06.08", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06.04", ## Lukas's version
                    ] ),
