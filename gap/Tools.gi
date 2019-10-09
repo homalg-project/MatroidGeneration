@@ -4,22 +4,6 @@
 # Implementations
 #
 
-##
-InstallMethod( MatroidByCoatomsNC,
-        "for a database document",
-        [ IsDatabaseDocument ],
-        
-  function( d )
-    local matroid;
-    
-    matroid := MatroidByCoatomsNC( d.NumberOfAtoms, d.Rank, d.ListOfCoatoms );
-    
-    matroid!.document := d;
-    
-    return matroid;
-    
-end );
-
 ## Constributed by Chris Jefferson
 ## Email from 27. April 2017 at 14:51:34 CEST
 InstallGlobalFunction( CopyPermGroup,

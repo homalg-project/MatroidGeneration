@@ -18,6 +18,16 @@ DeclareGlobalVariable( "MATROIDS_DB" );
 DeclareGlobalFunction( "AttachMatroidsDatabase" );
 
 #! @Description
+#!  Construct the matroid defined by the entries
+#!  * d.NumberOfAtoms
+#!  * d.Rank
+#!  * d.ListOfCoatoms (the maximal proper flats)
+#!  of the database document <A>d</A>.
+#! @Arguments d
+DeclareOperation( "MatroidByCoatomsNC",
+        [ IsDatabaseDocument ] );
+
+#! @Description
 #!  Get the list of equations and inequations defining
 #!  the possibly empty moduli space of vector matroids of the matroid
 #!  over the homalg ring <A>ZZ</A> defined by the document <A>d</A>.

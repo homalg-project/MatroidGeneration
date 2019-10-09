@@ -38,6 +38,22 @@ InstallGlobalFunction( AttachMatroidsDatabase,
 end );
 
 ##
+InstallMethod( MatroidByCoatomsNC,
+        "for a database document",
+        [ IsDatabaseDocument ],
+        
+  function( d )
+    local matroid;
+    
+    matroid := MatroidByCoatomsNC( d.NumberOfAtoms, d.Rank, d.ListOfCoatoms );
+    
+    matroid!.document := d;
+    
+    return matroid;
+    
+end );
+
+##
 InstallMethod( EquationsAndInequationsOfModuliSpaceOfMatroid,
         "for a database document and a homalg ring",
         [ IsDatabaseDocument, IsHomalgRing and IsIntegersForHomalg ],
