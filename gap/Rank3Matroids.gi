@@ -152,10 +152,10 @@ end );
 
 ##
 InstallGlobalFunction( ListOfMaximallyConnectedAtomsForBalancedness,
-  function(n, adjList)
+  function(n, coatoms)
     local counter, l, pair, bound;
     
-    counter := Collected(Flat(adjList));
+    counter := Collected(Flat(coatoms));
     
     l := [];
     
@@ -501,7 +501,7 @@ InstallGlobalFunction( IteratorOfNextBlock,
                      newWasteBudget, newFlatList, newLength, newPairMat, newLastUsedAtom,
                      interestingAtoms, newInterestingAtoms, removeRow, newIteratorState,
                      blockLength, newIter, currentMinimalBlock, newPreviousBlocks,
-                     completeAdjList, newMultiplicityVector, stabilizerPreviousBlocks,
+                     coatoms, newMultiplicityVector, stabilizerPreviousBlocks,
                      newStabilizerPreviousBlocks, nextIter;
                
                stack := it!.stack;
@@ -591,17 +591,17 @@ InstallGlobalFunction( IteratorOfNextBlock,
                            if Length(MultiplicityVector) = blockLength then
                                
                                #return finished result
-                               completeAdjList := MinimalAdjList( n, newPreviousBlocks);
+                               coatoms := MinimalListOfCoatoms( n, newPreviousBlocks);
                                
-                               return completeAdjList;
+                               return coatoms;
                                
                            elif Length(MultiplicityVector) > blockLength and MultiplicityVector[blockLength + 1] = 2 then
                                
                                #return finished results after appending the twos
-                               completeAdjList := AddFlatsConnectingPairsOfAtoms(n, newPreviousBlocks, newPairMat);
-                               completeAdjList := MinimalAdjList( n, newPreviousBlocks);
+                               coatoms := AddFlatsConnectingPairsOfAtoms(n, newPreviousBlocks, newPairMat);
+                               coatoms := MinimalListOfCoatoms( n, newPreviousBlocks);
                                
-                               return completeAdjList;
+                               return coatoms;
                                
                            else
                                
