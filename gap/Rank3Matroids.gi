@@ -180,6 +180,8 @@ InstallGlobalFunction( MinimalListOfCoatoms,
     
     min_coatoms := [ ];
     
+    coatoms := ShallowCopy( coatoms );
+    
     Sort( coatoms, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
     
     MultiplicityVector := List( coatoms, Length );
