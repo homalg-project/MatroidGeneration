@@ -28,6 +28,11 @@ DeclareGlobalFunction( "FlatExcessOfMultiplicityVector" );
 
 DeclareGlobalFunction( "ListOfMaximallyConnectedAtomsForBalancedness" );
 
+#! @Description
+#!  Compute using the &GAP; package <C>Images</C> the minimal representative
+#!  of the list of <A>coatoms</A> on the atoms [ 1 .. <A>n</A> ].
+#! @Arguments n, coatoms
+#! @Returns a list of lists
 DeclareGlobalFunction( "MinimalListOfCoatoms" );
 
 DeclareGlobalFunction( "IteratorOfFlatsPerBlock" );
