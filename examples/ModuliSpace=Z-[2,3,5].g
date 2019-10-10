@@ -4,6 +4,9 @@ d := db.matroids_split_public.document("34695a21a6c818bd99bc63bbf7ab162e2e9267cf
 matroid := MatroidByCoatomsNC( d );
 #homalgIOMode( "f" );
 ZZ := HomalgRingOfIntegersInSingular( );
+SetInfoLevel( InfoWarning, 0 );
 M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );
-LoadPackage( "ZariskiFrames", ">= 2019.04.16" );
+LoadPackage( "ZariskiFrames" );
 m := DistinguishedQuasiAffineSet( M );
+e := EmbedInSmallerAmbientSpace( m );
+a := DistinguishedLocallyClosedPart( e );
