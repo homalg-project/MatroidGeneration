@@ -30,10 +30,17 @@ DeclareGlobalFunction( "ListOfMaximallyConnectedAtomsForBalancedness" );
 
 #! @Description
 #!  Compute using the &GAP; package <C>Images</C> the minimal representative
-#!  of the list of <A>coatoms</A> on the atoms [ 1 .. <A>n</A> ].
-#! @Arguments n, coatoms
+#!  of the list of <A>coatoms</A> of the <A>matroid</A> on the atoms [ 1 .. <A>n</A> ].
+#! @Arguments matroid
 #! @Returns a list of lists
-DeclareGlobalFunction( "MinimalListOfCoatoms" );
+#! @Group MinimalListOfCoatoms
+DeclareAttribute( "MinimalListOfCoatoms",
+        IsMatroid );
+
+#! @Arguments n, coatoms
+#! @Group MinimalListOfCoatoms
+DeclareOperation( "MinimalListOfCoatoms",
+        [ IsInt, IsList ] );
 
 DeclareGlobalFunction( "IteratorOfFlatsPerBlock" );
 

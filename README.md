@@ -4,6 +4,7 @@ This package was used to create the publicly available read-only ArangoDB collec
 
 #### Table of contents
 
+* [Construct a matroid from the database and find the database key of a matroid](#construct-a-matroid-from-the-database-and-find-the-database-key-of-a-matroid)
 * [Accessing the collection through the web interface](#accessing-the-collection-through-the-web-interface)
 * [Accessing the collection through GAP](#accessing-the-collection-through-gap)
 * [Content of the collection](#content-of-the-collection)
@@ -11,6 +12,30 @@ This package was used to create the publicly available read-only ArangoDB collec
   * [in the web interface using filters](#in-the-web-interface-using-filters)
   * [in the web interface using a query](#in-the-web-interface-using-a-query)
   * [in GAP](#in-gap)
+
+## Construct a matroid from the database and find the database key of a matroid
+
+```gap
+gap> LoadPackage( "MatroidGeneration" );
+true
+gap> db := AttachMatroidsDatabase();
+#I  Connecting to http+ssl://matroid.mathematik.uni-siegen.de:443
+[object ArangoDatabase "MatroidsDB"]
+gap> sha := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";;
+gap> d := db.matroids_split_public.document( sha );
+[ArangoDocument]
+gap> matroid := MatroidByCoatomsNC( d );
+<A matroid>
+gap> coatoms := MinimalListOfCoatoms( matroid );
+[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11, 12 ], [ 2, 6, 10, 13 ],
+  [ 2, 7, 11, 14 ], [ 3, 6, 12, 14 ], [ 3, 8, 11, 13 ], [ 4, 9, 10, 14 ],
+  [ 4, 7, 13 ], [ 5, 7, 12 ], [ 5, 8, 10 ], [ 5, 9, 11 ], [ 5, 13, 14 ],
+  [ 9, 12, 13 ], [ 1, 13 ], [ 1, 14 ], [ 2, 8 ], [ 2, 9 ], [ 2, 12 ],
+  [ 3, 7 ], [ 3, 9 ], [ 3, 10 ], [ 4, 6 ], [ 4, 8 ], [ 4, 11 ],
+  [ 4, 12 ], [ 5, 6 ], [ 6, 11 ], [ 7, 10 ], [ 8, 12 ], [ 8, 14 ] ]
+gap> ShaSum( String( coatoms ) ) = sha;
+true
+```
 
 ## Accessing the collection through the web interface
 
@@ -142,7 +167,7 @@ by Martin Leuner (http://wwwb.math.rwth-aachen.de/~leuner/).
 Homepage: https://github.com/martin-leuner/alcove
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatroidGeneration 2019.06.09 (Generate low-rank matroids)
+Loading  MatroidGeneration 2019.06.11 (Generate low-rank matroids)
 by Mohamed Barakat (https://mohamed-barakat.github.io) and
    Lukas Kühne (https://github.com/lukaskuehne).
 Homepage: https://homalg-project.github.io/MatroidGeneration

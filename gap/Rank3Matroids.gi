@@ -172,7 +172,10 @@ InstallGlobalFunction( ListOfMaximallyConnectedAtomsForBalancedness,
 end );
 
 ##
-InstallGlobalFunction( MinimalListOfCoatoms,
+InstallMethod( MinimalListOfCoatoms,
+        "for an integer and a list",
+        [ IsInt, IsList ],
+        
   function( n, coatoms )
     local stab, min_coatoms, MultiplicityVector, blockStart, blockEnd, nextBlock, minimalBlock, minPerm;
     
@@ -237,6 +240,24 @@ InstallGlobalFunction( MinimalListOfCoatoms,
     Sort( min_coatoms, function( a, b ) return Length( a ) > Length( b ) or ( Length( a ) = Length( b ) and a < b ); end );
     
     return min_coatoms;
+    
+end );
+
+##
+InstallMethod( MinimalListOfCoatoms,
+        "for a matroid",
+        [ IsMatroid ],
+        
+  function( matroid )
+    local rank, coatoms, size;
+    
+    rank := RankOfMatroid( matroid );
+    
+    coatoms := FlatsOfRank( matroid, rank - 1 );
+    
+    size := Size( matroid );
+    
+    return MinimalListOfCoatoms( size, coatoms );
     
 end );
 
