@@ -222,6 +222,7 @@ The database collection `matroids_split_public` contains the values of the follo
 * IsCharPolyIntegrallySplitting
 * IsDivisionallyFree
 * IsEssentiallyUniquelyRepresentableOverZ
+* IsFactored
 * IsInductivelyFree
 * IsRepresentable
 * IsSimplicial
