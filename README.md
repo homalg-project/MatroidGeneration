@@ -4,6 +4,7 @@ This package was used to create the publicly available read-only ArangoDB collec
 
 #### Table of contents
 
+* [Construct a matroid from the database and find the database key of a matroid](#construct-a-matroid-from-the-database-and-find-the-database-key-of-a-matroid)
 * [Accessing the collection through the web interface](#accessing-the-collection-through-the-web-interface)
 * [Accessing the collection through GAP](#accessing-the-collection-through-gap)
 * [Content of the collection](#content-of-the-collection)
@@ -11,6 +12,30 @@ This package was used to create the publicly available read-only ArangoDB collec
   * [in the web interface using filters](#in-the-web-interface-using-filters)
   * [in the web interface using a query](#in-the-web-interface-using-a-query)
   * [in GAP](#in-gap)
+
+## Construct a matroid from the database and find the database key of a matroid
+
+```gap
+gap> LoadPackage( "MatroidGeneration" );
+true
+gap> db := AttachMatroidsDatabase();
+#I  Connecting to http+ssl://matroid.mathematik.uni-siegen.de:443
+[object ArangoDatabase "MatroidsDB"]
+gap> sha := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";;
+gap> d := db.matroids_split_public.document( sha );
+[ArangoDocument]
+gap> matroid := MatroidByCoatomsNC( d );
+<A matroid>
+gap> coatoms := MinimalListOfCoatoms( matroid );
+[ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ], [ 1, 10, 11, 12 ], [ 2, 6, 10, 13 ],
+  [ 2, 7, 11, 14 ], [ 3, 6, 12, 14 ], [ 3, 8, 11, 13 ], [ 4, 9, 10, 14 ],
+  [ 4, 7, 13 ], [ 5, 7, 12 ], [ 5, 8, 10 ], [ 5, 9, 11 ], [ 5, 13, 14 ],
+  [ 9, 12, 13 ], [ 1, 13 ], [ 1, 14 ], [ 2, 8 ], [ 2, 9 ], [ 2, 12 ],
+  [ 3, 7 ], [ 3, 9 ], [ 3, 10 ], [ 4, 6 ], [ 4, 8 ], [ 4, 11 ],
+  [ 4, 12 ], [ 5, 6 ], [ 6, 11 ], [ 7, 10 ], [ 8, 12 ], [ 8, 14 ] ]
+gap> ShaSum( String( coatoms ) ) = sha;
+true
+```
 
 ## Accessing the collection through the web interface
 
@@ -45,7 +70,7 @@ The package can also be used to access the collection directly.
 ```gap
 gap> LoadPackage( "MatroidGeneration" );
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  AutoDoc 2019.05.20 (Generate documentation from GAP source code)
+Loading  AutoDoc 2019.07.03 (Generate documentation from GAP source code)
 by Sebastian Gutsche (https://algebra.mathematik.uni-siegen.de/gutsche/) and
    Max Horn (https://www.quendi.de/math).
 Homepage: https://gap-packages.github.io/AutoDoc
@@ -81,7 +106,7 @@ by Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/),
 Homepage: https://gap-packages.github.io/images/
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatricesForHomalg 2019.06.03 (Lazy evaluated matrices with clever operations for the homalg project)
+Loading  MatricesForHomalg 2019.06.04 (Lazy evaluated matrices with clever operations for the homalg project)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
    Markus Lange-Hegermann (https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html),
    Martin Leuner (http://wwwb.math.rwth-aachen.de/Mitarbeiter/leuner.php), and
@@ -142,7 +167,7 @@ by Martin Leuner (http://wwwb.math.rwth-aachen.de/~leuner/).
 Homepage: https://github.com/martin-leuner/alcove
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatroidGeneration 2019.06.06 (Generate low-rank matroids)
+Loading  MatroidGeneration 2019.06.11 (Generate low-rank matroids)
 by Mohamed Barakat (https://mohamed-barakat.github.io) and
    Lukas Kühne (https://github.com/lukaskuehne).
 Homepage: https://homalg-project.github.io/MatroidGeneration
@@ -197,6 +222,7 @@ The database collection `matroids_split_public` contains the values of the follo
 * IsCharPolyIntegrallySplitting
 * IsDivisionallyFree
 * IsEssentiallyUniquelyRepresentableOverZ
+* IsFactored
 * IsInductivelyFree
 * IsRepresentable
 * IsSimplicial
@@ -214,7 +240,7 @@ The database collection `matroids_split_public` contains the values of the follo
 The first intended use case is to verify Terao's freeness conjecture for rank 3 matroids with 14 atoms.
 This can be either done by a query in the web interface or in GAP.
 
-For details see our paper "[On the generation of rank 3 simple matroids with an application to Terao's freeness conjecture]()".
+For details see our paper "[On the generation of rank 3 simple matroids with an application to Terao's freeness conjecture](http://arxiv.org/abs/1907.01073)".
 
 ### in the web interface using filters
 After choosing the collection `COLLECTION > matroids_split_public` press filter button
@@ -223,9 +249,9 @@ and enter the following filter values (which will be combined with the AND conne
 Rank == 3
 NumberOfAtoms == 14
 IsRepresentable == true
-IsUniquelyRepresentableOverZ == false
 IsInductivelyFree == false
 IsStronglyBalanced == true
+IsUniquelyRepresentableOverZ == false
 ```
 and then press ENTER. The result will be `No documents`.
 
@@ -242,9 +268,9 @@ FOR d IN matroids_split_public
   FILTER d.Rank == 3 &&
          d.NumberOfAtoms == 14 &&
          d.IsRepresentable == true &&
-         d.IsUniquelyRepresentableOverZ == false &&
          d.IsInductivelyFree == false &&
-	 d.IsStronglyBalanced == true
+         d.IsStronglyBalanced == true &&
+         d.IsUniquelyRepresentableOverZ == false
   SORT d.NumberOfAtoms, d.Characteristic, d.DimensionOverZ DESC
   RETURN { NumberOfAtoms : d.NumberOfAtoms,
            Characteristic: d.Characteristic,
@@ -267,14 +293,15 @@ FOR d IN matroids_split_public
 gap> LoadPackage( "MatroidGeneration" );
 true
 gap> db := AttachMatroidsDatabase();
+#I  Connecting to http+ssl://matroid.mathematik.uni-siegen.de:443
 [object ArangoDatabase "MatroidsDB"]
 gap> q := QueryDatabase( rec(
 >      	  Rank := 3,
 >      	  NumberOfAtoms := 14,
 >      	  IsRepresentable := true,
->	  IsUniquelyRepresentableOverZ := false,
 >	  IsInductivelyFree := false,
->	  IsStronglyBalanced := true ),
+>	  IsStronglyBalanced := true,
+>	  IsUniquelyRepresentableOverZ := false ),
 > db.matroids_split_public );
 [ArangoQueryCursor in [object ArangoDatabase "MatroidsDB"]]
 gap> q.count();

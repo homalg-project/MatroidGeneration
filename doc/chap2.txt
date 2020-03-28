@@ -12,7 +12,19 @@
   [33X[0;0YAttach       the       Arango       database       of       matroids      at
   [10Xhttp://matroid.mathematik.uni-siegen.de:8529[110X.[133X
   
-  [1X2.1-2 EquationsAndInequationsOfModuliSpaceOfMatroid[101X
+  [1X2.1-2 MatroidByCoatomsNC[101X
+  
+  [33X[1;0Y[29X[2XMatroidByCoatomsNC[102X( [3Xd[103X ) [32X operation[133X
+  
+  [33X[0;0YConstruct the matroid defined by the entries[133X
+  
+  [30X    [33X[0;6Yd.NumberOfAtoms[133X
+  
+  [30X    [33X[0;6Yd.Rank[133X
+  
+  [30X    [33X[0;6Yd.ListOfCoatoms (the maximal proper flats) of the database document [3Xd[103X.[133X
+  
+  [1X2.1-3 EquationsAndInequationsOfModuliSpaceOfMatroid[101X
   
   [33X[1;0Y[29X[2XEquationsAndInequationsOfModuliSpaceOfMatroid[102X( [3Xd[103X, [3XZZ[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

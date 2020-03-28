@@ -6,10 +6,10 @@
                           [1X Generate low-rank matroids [101X
   
   
-                                   2019.06.06
+                                   2019.06.11
   
   
-                                  6 June 2019
+                                  11 June 2019
   
   
                                 Mohamed Barakat
@@ -41,14 +41,13 @@
   1 [33X[0;0YGenerate low-rank matroids[133X
     1.1 [33X[0;0YRank 3 matroids[133X
       1.1-1 GenerateMultiplicityVectorsOfRank3SplitMatroids
-      1.1-2 Rank3MatroidIterator
+      1.1-2 MinimalListOfCoatoms
+      1.1-3 Rank3MatroidIterator
   2 [33X[0;0YThe database of matroids[133X
     2.1 [33X[0;0YThe database of matroids[133X
       2.1-1 AttachMatroidsDatabase
-      2.1-2 EquationsAndInequationsOfModuliSpaceOfMatroid
-  3 [33X[0;0YMatroidGeneration automatic generated documentation[133X
-    3.1 [33X[0;0YMatroidGeneration automatic generated documentation of methods[133X
-      3.1-1 MatroidByCoatomsNC
+      2.1-2 MatroidByCoatomsNC
+      2.1-3 EquationsAndInequationsOfModuliSpaceOfMatroid
   
   
   [32X
