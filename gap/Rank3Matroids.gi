@@ -57,7 +57,7 @@ InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
         od;
     od;
     
-    return result;
+    return Set( result );
     
 end );
 
