@@ -1,17 +1,19 @@
 name: MatroidGeneration
-version: 2019.06.13
-date: 13/06/2019
-description: Generate low-rank matroids
+version: "2019.06.16"
+license: "GPL-2.0-or-later"
+date: 2019-06-16
+description: |
+    Generate low-rank matroids
 
 authors:
     - name: Mohamed Barakat
-      url: https://mohamed-barakat.github.io
+      url: https://mohamed-barakat.github.io/
     - name: Lukas Kühne
       url: https://github.com/lukaskuehne
 
 maintainers:
     - name: Mohamed Barakat
-      url: https://mohamed-barakat.github.io
+      url: https://mohamed-barakat.github.io/
     - name: Lukas Kühne
       url: https://github.com/lukaskuehne
 
@@ -29,7 +31,7 @@ needed-pkgs:
       url: "https://homalg-project.github.io/ParallelizedIterators"
     - name: "ArangoDBInterface"
       version: ">= 2018.12.09"
-      url: "https://github.com/homalg-project/ArangoDBInterface/"
+      url: "https://homalg-project.github.io/ArangoDBInterface"
     - name: "alcove"
       version: ">= 2019-03-11"
       url: "https://github.com/martin-leuner/alcove"
@@ -40,10 +42,35 @@ packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2019.06.13/MatroidGeneration-2019.06.13.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2019.06.16/MatroidGeneration-2019.06.16.tar.gz
 
-abstract: 
+abstract: |
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+keywords: |
+    matroid generation, low-rank matroids.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>BK19</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
+     <i class='BibTitle'>MatroidGeneration, Generate low-rank matroids,
+             Version 2019.06.16</i>
+     (<span class='BibYear'>2019</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/MatroidGeneration">https://homalg-project.github.io/MatroidGeneration</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ MatroidGeneration2019.06.16,
+      author =           {Barakat, M. and K{\"u}hne, L.},
+      title =            {{MatroidGeneration}, Generate low-rank matroids, {V}ersion 2019.06.16},
+      month =            {Jun},
+      year =             {2019},
+      note =             {GAP package},
+      howpublished =     {\href {https://homalg-project.github.io/MatroidGeneration} {\texttt{https://homalg-project.github.io/}\discretionary {}{}{}\texttt{MatroidGeneration}}},
+      keywords =         {matroid generation, low-rank matroids},
+      printedkey =       {BK19}
+    }
+

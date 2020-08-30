@@ -1,6 +1,13 @@
-# The GAP package MatroidGeneration
+# MatroidGeneration – Generate low-rank matroids
 
-This package was used to create the publicly available read-only ArangoDB collection `matroids_split_public`.
+| **Documentation**                       |
+|:---------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] |
+
+[docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-stable-url]: https://homalg-project.github.io/MatroidGeneration/doc/chap0.html
+
+This GAP package was used to create the [publicly available](https://matroid.mathematik.uni-siegen.de/) read-only ArangoDB collection `matroids_split_public`.
 
 #### Table of contents
 
@@ -69,109 +76,136 @@ The package can also be used to access the collection directly.
 1. First start `gap` and make sure you can
 ```gap
 gap> LoadPackage( "MatroidGeneration" );
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  AutoDoc 2019.07.03 (Generate documentation from GAP source code)
-by Sebastian Gutsche (https://algebra.mathematik.uni-siegen.de/gutsche/) and
-   Max Horn (https://www.quendi.de/math).
-Homepage: https://gap-packages.github.io/AutoDoc
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Loading  ferret 1.0.2 (Backtrack Search in Permutation Groups)
 by Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/).
 Homepage: https://gap-packages.github.io/ferret/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  Gauss 2019.06.01 (Extended Gauss functionality for GAP)
+Report issues at https://github.com/gap-packages/ferret/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  Gauss 2020.06.27 (Extended Gauss functionality for GAP)
 by Simon Görtzen (https://www.linkedin.com/in/simongoertzen/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io) and
+   Sebastian Gutsche (https://sebasguts.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/Gauss/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  json 2.0.0 (Reading and Writing JSON)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  json 2.0.1 (Reading and Writing JSON)
 by Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/).
 Homepage: https://gap-packages.github.io/json/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  ToolsForHomalg 2019.06.02 (Provides special methods and knowledge propagation tools)
+Report issues at https://github.com/gap-packages/json/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  ToolsForHomalg 2020.05.12 (Provides special methods and knowledge propagation tools)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
    Sebastian Gutsche (https://sebasguts.github.io), and
    Markus Lange-Hegermann (http://wwwb.math.rwth-aachen.de/~markus/).
 Homepage: https://homalg-project.github.io/homalg_project/ToolsForHomalg/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  images 1.1.0 (Minimal and Canonical images)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  images 1.3.0 (Minimal and Canonical images)
 by Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/),
    Markus Pfeiffer (http://www.morphism.de/~markusp/),
    Rebecca Waldecker (http://conway1.mathematik.uni-halle.de/~waldecker/), and
    Eliza Jonauskyte (ej31@st-andrews.ac.uk).
+maintained by:
+   Christopher Jefferson (http://caj.host.cs.st-andrews.ac.uk/).
 Homepage: https://gap-packages.github.io/images/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatricesForHomalg 2019.06.04 (Lazy evaluated matrices with clever operations for the homalg project)
+Report issues at https://github.com/gap-packages/images/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  MatricesForHomalg 2020.06.30 (Lazy evaluated matrices with clever operations for the homalg project)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
-   Markus Lange-Hegermann (https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html),
+   Markus Lange-Hegermann (https://www.th-owl.de/eecs/fachbereich/team/markus-lange-hegermann/),
    Martin Leuner (http://wwwb.math.rwth-aachen.de/Mitarbeiter/leuner.php), and
    Vinay Wagh (http://www.iitg.ernet.in/vinay.wagh/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/MatricesForHomalg/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Loading  ParallelizedIterators 2019.06.06 (Parallely evaluate recursive iterators)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
    Reimer Behrends (https://github.com/rbehrends), and
    Lukas Kühne (https://github.com/lukaskuehne).
 Homepage: https://homalg-project.github.io/ParallelizedIterators
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  GaussForHomalg 2019.06.01 (Gauss functionality for the homalg project)
+Report issues at https://github.com/homalg-project/ParallelizedIterators/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  GaussForHomalg 2020.06.27 (Gauss functionality for the homalg project)
 by Simon Görtzen (https://www.linkedin.com/in/simongoertzen/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/GaussForHomalg/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  HomalgToCAS 2019.06.01 (A window to the outer world)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  HomalgToCAS 2020.06.27 (A window to the outer world)
 by Thomas Bächler (http://wwwb.math.rwth-aachen.de/~thomas/),
    Mohamed Barakat (https://mohamed-barakat.github.io),
    Simon Görtzen (https://www.linkedin.com/in/simongoertzen/),
    Sebastian Gutsche (https://sebasguts.github.io), and
    Vinay Wagh (http://www.iitg.ernet.in/vinay.wagh/).
+with contributions by:
+   Thomas Breuer (http://www.math.rwth-aachen.de/~Thomas.Breuer/) and
+   Frank Lübeck (http://www.math.rwth-aachen.de/~Frank.Luebeck/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/HomalgToCAS/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  IO_ForHomalg 2019.06.01 (IO capabilities for the homalg project)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  IO_ForHomalg 2020.04.30 (IO capabilities for the homalg project)
 by Thomas Bächler (http://wwwb.math.rwth-aachen.de/~thomas/),
    Mohamed Barakat (https://mohamed-barakat.github.io),
    Sebastian Gutsche (https://algebra.mathematik.uni-siegen.de/gutsche/),
    Max Neunhöffer (http://www-groups.mcs.st-and.ac.uk/~neunhoef/), and
    Daniel Robertz (http://wwwb.math.rwth-aachen.de/~daniel/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/IO_ForHomalg/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  RingsForHomalg 2019.06.01 (Dictionaries of external rings for the homalg project)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  RingsForHomalg 2020.06.30 (Dictionaries of external rings for the homalg project)
 by Mohamed Barakat (https://mohamed-barakat.github.io),
    Simon Görtzen (https://www.linkedin.com/in/simongoertzen/),
    Markus Kirschmer (http://www.math.rwth-aachen.de/~Markus.Kirschmer/),
-   Markus Lange-Hegermann (https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html),
+   Markus Lange-Hegermann (https://www.th-owl.de/eecs/fachbereich/team/markus-lange-hegermann/),
    Oleksandr Motsak (http://www.mathematik.uni-kl.de/~motsak/),
    Daniel Robertz (http://wwwb.math.rwth-aachen.de/~daniel/),
    Hans Schönemann (http://www.mathematik.uni-kl.de/~hannes/),
    Andreas Steenpaß (steenpass@mathematik.uni-kl.de), and
    Vinay Wagh (http://www.iitg.ernet.in/vinay.wagh/).
+with contributions by:
+   Max Neunhöffer (http://www-groups.mcs.st-and.ac.uk/~neunhoef/).
+maintained by:
+   Mohamed Barakat (https://mohamed-barakat.github.io).
 Homepage: https://homalg-project.github.io/homalg_project/RingsForHomalg/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  ArangoDBInterface 2019.04.07 (An interface to ArangoDB)
-by Mohamed Barakat (https://algebra.mathematik.uni-siegen.de/barakat/).
-Homepage: https://github.com/homalg-project/ArangoDBInterface/
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  alcove 2019-03-11 (alcove - Objects in Algebraic Combinatorics)
+Report issues at https://github.com/homalg-project/homalg_project/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  ArangoDBInterface 2020.04.16 (An interface to ArangoDB)
+by Mohamed Barakat (https://mohamed-barakat.github.io/).
+Homepage: https://homalg-project.github.io/ArangoDBInterface
+Report issues at https://github.com/homalg-project/ArangoDBInterface/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  alcove 2019-09-01 (alcove - Objects in Algebraic Combinatorics)
 by Martin Leuner (http://wwwb.math.rwth-aachen.de/~leuner/).
 Homepage: https://github.com/martin-leuner/alcove
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Loading  MatroidGeneration 2019.06.11 (Generate low-rank matroids)
-by Mohamed Barakat (https://mohamed-barakat.github.io) and
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Loading  MatroidGeneration 2019.06.16 (Generate low-rank matroids)
+by Mohamed Barakat (https://mohamed-barakat.github.io/) and
    Lukas Kühne (https://github.com/lukaskuehne).
 Homepage: https://homalg-project.github.io/MatroidGeneration
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Report issues at https://github.com/homalg-project/MatroidGeneration/issues
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 true
 ```
 `MatroidGeneration` recursively depends on the above packages, which can all be downloaded

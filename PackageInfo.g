@@ -11,13 +11,15 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2019.06.13", ## Mohamed's version
+                   "2019.06.16", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06.04", ## Lukas's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
+
 
 Persons := [
   rec(
@@ -25,7 +27,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://mohamed-barakat.github.io",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -41,12 +43,12 @@ Persons := [
     LastName := "Kühne",
     WWWHome := "https://github.com/lukaskuehne",
     Email := "lf.kuehne@gmail.com",
-    PostalAddress := Concatenation(
-               "\n",
-               "\n",
-               "Israel" ),
-    Place := "Jerusalem",
-    Institution := "Hebrew University of Jerusalem",
+           PostalAddress := Concatenation(
+               "Inselstr. 22\n",
+               "04103 Leipzig\n",
+               "Germany" ),
+    Place := "Leipzig",
+    Institution := "Max Planck Institute for Mathematics in the Sciences",
   ),
 ],
 
@@ -55,7 +57,6 @@ SourceRepository := rec(
     URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
 PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),

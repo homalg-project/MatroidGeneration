@@ -6,10 +6,10 @@
                           [1X Generate low-rank matroids [101X
   
   
-                                   2019.06.13
+                                   2019.06.16
   
   
-                                  13 June 2019
+                                  16 June 2019
   
   
                                 Mohamed Barakat
@@ -20,7 +20,7 @@
   
   Mohamed Barakat
       Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
-      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io/[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
@@ -29,7 +29,9 @@
   Lukas Kühne
       Email:    [7Xmailto:lf.kuehne@gmail.com[107X
       Homepage: [7Xhttps://github.com/lukaskuehne[107X
-      Address:  [33X[0;14YIsrael[133X
+      Address:  [33X[0;14YInselstr. 22[133X
+                [33X[0;14Y04103 Leipzig[133X
+                [33X[0;14YGermany[133X
   
   
   
