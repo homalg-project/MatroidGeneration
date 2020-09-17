@@ -3,8 +3,6 @@ using HomalgProject
 
 LoadPackage( "MatroidGeneration" )
 
-LoadPackage( "ZariskiFrames" )
-
 coatoms =
   [ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ],
     [ 1, 10, 11, 12 ], [ 2, 6, 10, 13 ], [ 2, 7, 11, 14 ], [ 3, 6, 12, 14 ], [ 3, 8, 11, 13 ], [ 4, 9, 10, 14 ],
@@ -17,6 +15,8 @@ matroid = MatroidByCoatomsNC( 14, 3, ConvertJuliaToGAP( coatoms ) )
 ℤ = HomalgRingOfIntegersInSingular( )
 
 SetInfoLevel( InfoWarning, 0 )
+
+LoadPackage( "ZariskiFrames" )
 
 M = EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ℤ );
 
