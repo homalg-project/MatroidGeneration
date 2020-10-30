@@ -1,5 +1,5 @@
-#
-# MatroidGeneration: Rank 3 matroids
+# SPDX-License-Identifier: GPL-2.0-or-later
+# MatroidGeneration: Generate low-rank matroids
 #
 # Declarations
 #
