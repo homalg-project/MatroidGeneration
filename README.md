@@ -1,11 +1,13 @@
-# MatroidGeneration – Generate low-rank matroids
+<!-- BEGIN HEADER -->
+# MatroidGeneration
 
-| **Documentation**                       |
-|:---------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url] |
+### Generate low-rank matroids
 
-[docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
-[docs-stable-url]: https://homalg-project.github.io/MatroidGeneration/doc/chap0.html
+| Documentation | Latest Release |
+| ------------- | -------------- |
+| [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] |
+
+<!-- END HEADER -->
 
 This GAP package was used to create the [publicly available](https://matroid.mathematik.uni-siegen.de/) read-only ArangoDB collection `matroids_split_public`.
 
@@ -341,3 +343,35 @@ gap> q := QueryDatabase( rec(
 gap> q.count();
 0
 ```
+<!-- BEGIN FOOTER -->
+---
+
+### Dependencies
+
+To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
+
+|    | Repository | git URL |
+|--- | ---------- | ------- |
+| 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
+| 2. | [**ArangoDBInterface**](https://github.com/homalg-project/ArangoDBInterface#readme) | https://github.com/homalg-project/ArangoDBInterface.git |
+| 3. | [**ParallelizedIterators**](https://github.com/homalg-project/ParallelizedIterators#readme) | https://github.com/homalg-project/ParallelizedIterators.git |
+| 4. | [**alcove**](https://github.com/homalg-project/alcove#readme) | https://github.com/homalg-project/alcove.git |
+
+[html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-url]: https://homalg-project.github.io/MatroidGeneration/doc/chap0_mj.html
+
+[pdf-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-url]: https://homalg-project.github.io/MatroidGeneration/download_pdf.html
+
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/MatroidGeneration/badge_version.json
+[version-url]: https://homalg-project.github.io/MatroidGeneration/view_release.html
+
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/MatroidGeneration/badge_date.json
+[date-url]: https://homalg-project.github.io/MatroidGeneration/view_release.html
+
+[tests-img]: https://github.com/homalg-project/MatroidGeneration/workflows/Tests/badge.svg?branch=master
+[tests-url]: https://github.com/homalg-project/MatroidGeneration/actions?query=workflow%3ATests+branch%3Amaster
+
+[codecov-img]: https://codecov.io/gh/homalg-project/MatroidGeneration/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/homalg-project/MatroidGeneration
+<!-- END FOOTER -->

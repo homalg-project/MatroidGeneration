@@ -1,5 +1,5 @@
-#
-# MatroidGeneration
+# SPDX-License-Identifier: GPL-2.0-or-later
+# MatroidGeneration: Generate low-rank matroids
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -11,13 +11,13 @@ SetPackageInfo( rec(
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
 Version := Maximum( [
-                   "2020.10-01", ## Mohamed's version
+                   "2020.10-02", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.06.04", ## Lukas's version
+                   "2019.06-04", ## Lukas's version
                    ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "30/10/2020",
+Date := "30/10/2020",
 License := "GPL-2.0-or-later",
 
 
@@ -52,19 +52,19 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/MatroidGeneration",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/MatroidGeneration",
+PackageInfoURL  := "https://homalg-project.github.io/MatroidGeneration/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/MatroidGeneration/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/MatroidGeneration/releases/download/v", ~.Version, "/MatroidGeneration-", ~.Version ),
+# END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

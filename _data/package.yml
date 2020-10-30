@@ -1,7 +1,7 @@
 name: MatroidGeneration
-version: "2020.10-01"
+version: "2020.10-02"
 license: "GPL-2.0-or-later"
-date: 2020-10-01
+date: 2020-10-30
 description: |
     Generate low-rank matroids
 
@@ -42,7 +42,11 @@ packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2020.10-01/MatroidGeneration-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2020.10-02/MatroidGeneration-2020.10-02.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2020.10-02/MatroidGeneration-2020.10-02.zip
+
+pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2020.10-02/MatroidGeneration-2020.10-02.pdf
 
 abstract: |
 
@@ -55,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BK20</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
      <i class='BibTitle'>MatroidGeneration, Generate low-rank matroids,
-             Version 2020.10-01</i>
+             Version 2020.10-02</i>
      (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/MatroidGeneration">https://homalg-project.github.io/MatroidGeneration</a></span>.
@@ -63,13 +67,17 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MatroidGeneration2020.10-01,
+    @misc{ MatroidGeneration2020.10-02,
       author =           {Barakat, M. and K{\"u}hne, L.},
-      title =            {{MatroidGeneration}, Generate low-rank matroids, {V}ersion 2020.10-01},
+      title =            {{MatroidGeneration},   Generate   low-rank   matroids,
+                          {V}ersion 2020.10-02},
       month =            {Oct},
       year =             {2020},
       note =             {GAP package},
-      howpublished =     {\href {https://homalg-project.github.io/MatroidGeneration} {\texttt{https://homalg-project.github.io/}\discretionary {}{}{}\texttt{MatroidGeneration}}},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/MatroidGeneration}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{MatroidGeneration}}},
       keywords =         {matroid generation, low-rank matroids},
       printedkey =       {BK20}
     }
