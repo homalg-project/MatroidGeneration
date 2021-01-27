@@ -58,7 +58,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/MatroidGeneration",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/MatroidGeneration",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/MatroidGeneration",
 PackageInfoURL  := "https://homalg-project.github.io/MatroidGeneration/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/MatroidGeneration/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/MatroidGeneration/releases/download/v", ~.Version, "/MatroidGeneration-", ~.Version ),
