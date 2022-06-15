@@ -10,14 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
-Version := Maximum( [
-                   "2020.10-02", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   "2019.06-04", ## Lukas's version
-                   ] ),
+Version := "2022.06-01",
 
-Date := "30/10/2020",
-Date := "30/10/2020",
+Date := "15/06/2022",
+Date := "15/06/2022",
 License := "GPL-2.0-or-later",
 
 
@@ -58,7 +54,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/MatroidGeneration",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/MatroidGeneration",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/MatroidGeneration",
 PackageInfoURL  := "https://homalg-project.github.io/MatroidGeneration/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/MatroidGeneration/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/MatroidGeneration/releases/download/v", ~.Version, "/MatroidGeneration-", ~.Version ),
@@ -88,7 +84,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.9.1",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "images", ">= 1.1.0" ],
