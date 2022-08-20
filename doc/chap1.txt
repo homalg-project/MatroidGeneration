@@ -44,6 +44,7 @@
   only balanced matroids.[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsHPCGAP[128X[104X
     [4X[25Xgap>[125X [27Xmult_vec := [ [ 2, 8 ], [ 3, 9 ], [ 5, 2 ] ];;[127X[104X
     [4X[25Xgap>[125X [27Xriter := Rank3MatroidIterator( 11, mult_vec );[127X[104X
     [4X[28X<iterator>[128X[104X
@@ -65,5 +66,6 @@
     [4X[28X  [ 4, 6 ], [ 4, 8 ], [ 5, 6 ], [ 5, 7 ] ][128X[104X
     [4X[25Xgap>[125X [27XReceiveChannel( channel_of_matroids );[127X[104X
     [4X[28Xfail[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   

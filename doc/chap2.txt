@@ -9,8 +9,9 @@
   [33X[1;0Y[29X[2XAttachMatroidsDatabase[102X(  ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya an Arango database[133X
   
-  [33X[0;0YAttach       the       Arango       database       of       matroids      at
-  [10Xhttp://matroid.mathematik.uni-siegen.de:8529[110X.[133X
+  [33X[0;0YAttach the Arango database of matroids at:[133X
+  
+  [33X[0;0Y[10Xhttp://matroid.mathematik.uni-siegen.de:8529[110X[133X
   
   [1X2.1-2 MatroidByCoatomsNC[101X
   

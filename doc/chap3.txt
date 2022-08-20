@@ -1,0 +1,101 @@
+  
+  [1X3 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YDivisionally free but not inductively free arrangement[133X[101X
+  
+  [33X[0;0YThis is the smallest representable rank [23X3[123X matroid which is divisionally free
+  but not inductively free. It has [23X14[123X atoms (cf. [BBJ+21]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27X#db := AttachMatroidsDatabase( ); # needs arangosh[127X[104X
+    [4X[25Xgap>[125X [27X#key := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";[127X[104X
+    [4X[25Xgap>[125X [27X#d := db.matroids_split_public.document( key );[127X[104X
+    [4X[25Xgap>[125X [27Xd := [ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ],[127X[104X
+    [4X[25X>[125X [27X       [ 1, 10, 11, 12 ], [ 2, 6, 10, 13 ], [ 2, 7, 11, 14 ],[127X[104X
+    [4X[25X>[125X [27X       [ 3, 6, 12, 14 ], [ 3, 8, 11, 13 ], [ 4, 9, 10, 14 ],[127X[104X
+    [4X[25X>[125X [27X       [ 4, 7, 13 ], [ 5, 7, 12 ], [ 5, 8, 10 ],[127X[104X
+    [4X[25X>[125X [27X       [ 5, 9, 11 ], [ 5, 13, 14 ], [ 9, 12, 13 ],[127X[104X
+    [4X[25X>[125X [27X       [ 1, 13 ], [ 1, 14 ], [ 2, 8 ], [ 2, 9 ], [ 2, 12 ], [ 3, 7 ],[127X[104X
+    [4X[25X>[125X [27X       [ 3, 9 ], [ 3, 10 ], [ 4, 6 ], [ 4, 8 ], [ 4, 11 ], [ 4, 12 ],[127X[104X
+    [4X[25X>[125X [27X       [ 5, 6 ], [ 6, 11 ], [ 7, 10 ], [ 8, 12 ], [ 8, 14 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xmatroid := MatroidByCoatomsNC( 14, 3, d );[127X[104X
+    [4X[28X<A matroid>[128X[104X
+    [4X[25Xgap>[125X [27X#homalgIOMode( "f" );[127X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XSetInfoLevel( InfoWarning, 0 );[127X[104X
+    [4X[25Xgap>[125X [27XM := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ZariskiFrames" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm := DistinguishedQuasiAffineSet( M );[127X[104X
+    [4X[28XV_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )[128X[104X
+    [4X[28X\ V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( J_1 )[128X[104X
+    [4X[28X\ .. \ V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( J_199 )[128X[104X
+    [4X[25Xgap>[125X [27Xe := EmbedInSmallerAmbientSpace( m );[127X[104X
+    [4X[28XV_{Z[a9]}( I ) \ V_{Z[a9]}( J_1 ) \ V_{Z[a9]}( J_2 )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( e );[127X[104X
+    [4X[28XV( <2*a9^2-2*a9+1> ) \ V( <5,a9+1> ) \ V( <5,a9-2> )[128X[104X
+    [4X[25Xgap>[125X [27Xa := DistinguishedLocallyClosedPart( e );[127X[104X
+    [4X[28XV_{Z[a9]}( I ) \ V_{Z[a9]}( J_1 ) \ V_{Z[a9]}( J_2 )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28XV( <2*a9^2-2*a9+1> ) \ V( <3*a9-1> ) \ V( <a9+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xpiter := PseudoIteratorOfClosedPoints( e );[127X[104X
+    [4X[28X<iterator of closed points of[128X[104X
+    [4X[28X V_{Z[a9]}( I ) \ V_{Z[a9]}( J_1 ) \ V_{Z[a9]}( J_2 )>[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(3)[a9]/( a9^2-a9-1 ):[128X[104X
+    [4X[28X1,0,1,1,    1,  0,1,1,   1,    0, 1,   1, 0,    1,[128X[104X
+    [4X[28X0,1,1,-a9-1,-a9,0,0,0,   0,    1, a9-1,1, 1,    1,[128X[104X
+    [4X[28X0,0,0,0,    0,  1,1,a9+1,-a9+1,a9,1,   a9,-a9-1,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ a9^2-a9-1 ][128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(7)[a9]/( a9^2-a9-3 ):[128X[104X
+    [4X[28X1,0,1,1,     1,   0,1,1,      1,    0, 1,      1, 0,     1,[128X[104X
+    [4X[28X0,1,1,2*a9-1,2*a9,0,0,0,      0,    1, -2*a9+2,1, 1,     1,[128X[104X
+    [4X[28X0,0,0,0,     0,   1,1,-2*a9+1,-a9+1,a9,1,      a9,2*a9-1,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ a9^2-a9-3 ][128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(11)[a9]/( a9^2-a9-5 ):[128X[104X
+    [4X[28X1,0,1,1,     1,   0,1,1,      1,    0, 1,      1, 0,     1,[128X[104X
+    [4X[28X0,1,1,2*a9-1,2*a9,0,0,0,      0,    1, -2*a9+2,1, 1,     1,[128X[104X
+    [4X[28X0,0,0,0,     0,   1,1,-2*a9+1,-a9+1,a9,1,      a9,2*a9-1,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ a9^2-a9-5 ][128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(13):[128X[104X
+    [4X[28X1,0,1,1, 1, 0,1,1,1,0, 1,1, 0, 1,[128X[104X
+    [4X[28X0,1,1,-5,-4,0,0,0,0,1, 6,1, 1, 1,[128X[104X
+    [4X[28X0,0,0,0, 0, 1,1,5,3,-2,1,-2,-5,1[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(17):[128X[104X
+    [4X[28X1,0,1,1,1,0,1,1, 1,0, 1, 1, 0,1,[128X[104X
+    [4X[28X0,1,1,4,5,0,0,0, 0,1, -3,1, 1,1,[128X[104X
+    [4X[28X0,0,0,0,0,1,1,-4,7,-6,1, -6,4,1[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( piter );[127X[104X
+    [4X[28X<A vector matroid>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XThe vector matroid of this matrix over GF(19)[a9]/( a9^2-a9-9 ):[128X[104X
+    [4X[28X1,0,1,1,     1,   0,1,1,      1,    0, 1,      1, 0,     1,[128X[104X
+    [4X[28X0,1,1,2*a9-1,2*a9,0,0,0,      0,    1, -2*a9+2,1, 1,     1,[128X[104X
+    [4X[28X0,0,0,0,     0,   1,1,-2*a9+1,-a9+1,a9,1,      a9,2*a9-1,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ a9^2-a9-9 ][128X[104X
+    [4X[25Xgap>[125X [27Xcharset := ConstructibleProjection( e );[127X[104X
+    [4X[28X( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( charset );[127X[104X
+    [4X[28XV( <> ) \ V( <2> ) \ V( <5> )[128X[104X
+  [4X[32X[104X
+  
