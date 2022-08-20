@@ -2,3 +2,8 @@
 
 @Chapter The database of matroids
 
+@Chapter Examples
+
+@Section Divisionally free but not inductively free arrangement
+
+@InsertChunk DivFreeNotIndFree

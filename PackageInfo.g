@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
-Version := "2022.06-01",
+Version := "2022.08-01",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
