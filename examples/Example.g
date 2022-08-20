@@ -3,6 +3,7 @@
 LoadPackage( "MatroidGeneration" );
 
 #! @Example
+#! #@if IsHPCGAP
 mult_vec := [ [ 2, 8 ], [ 3, 9 ], [ 5, 2 ] ];;
 riter := Rank3MatroidIterator( 11, mult_vec );
 #! <iterator>
@@ -24,4 +25,5 @@ coatoms2[1];
 #!   [ 4, 6 ], [ 4, 8 ], [ 5, 6 ], [ 5, 7 ] ]
 ReceiveChannel( channel_of_matroids );
 #! fail
+#! #@fi
 #! @EndExample

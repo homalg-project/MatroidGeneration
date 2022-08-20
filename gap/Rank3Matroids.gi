@@ -29,7 +29,7 @@ InstallGlobalFunction( GenerateMultiplicityVectorsOfRank3SplitMatroids,
     fi;
     
     for exp1 in maxExponentRange do
-	
+        
         # The two non-trivial exponents of A
         exp2 := n - 1 - exp1;
         
@@ -95,7 +95,7 @@ InstallGlobalFunction( AddFlatsConnectingPairsOfAtoms,
     
 end );
 
-##	
+##
 InstallGlobalFunction( ChangeInterestingVector,
   function(currVector, lastUsedAtom, newLastUsedAtom, interesting)
     local newInteresting, i;

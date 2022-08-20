@@ -7,11 +7,15 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "ZariskiFrames", false );
+true
 gap> LoadPackage( "IO_ForHomalg", false );
 true
 gap> LoadPackage( "MatroidGeneration", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "ZariskiFrames" );
+true
 gap> LoadPackage( "IO_ForHomalg" );
 true
 gap> LoadPackage( "MatroidGeneration" );
