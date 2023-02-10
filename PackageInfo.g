@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
-Version := "2022.08-01",
+Version := "2023.02-01",
 
-Date := "20/08/2022",
-Date := "20/08/2022",
+Date := "10/02/2023",
+Date := "10/02/2023",
 License := "GPL-2.0-or-later",
 
 
@@ -84,7 +84,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "images", ">= 1.1.0" ],
