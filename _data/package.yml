@@ -1,7 +1,7 @@
 name: MatroidGeneration
-version: "2023.02-01"
+version: "2023.06-01"
 license: "GPL-2.0-or-later"
-date: 2023-02-10
+date: 2023-06-19
 description: |
     Generate low-rank matroids
 
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.02-01/MatroidGeneration-2023.02-01.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.06-01/MatroidGeneration-2023.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.02-01/MatroidGeneration-2023.02-01.zip
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.06-01/MatroidGeneration-2023.06-01.zip
 
-pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.02-01/MatroidGeneration-2023.02-01.pdf
+pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2023.06-01/MatroidGeneration-2023.06-01.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BK23</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
      <i class='BibTitle'>MatroidGeneration, Generate low-rank matroids,
-             Version 2023.02-01</i>
+             Version 2023.06-01</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MatroidGeneration">https://homalg-project.github.io/pkg/MatroidGeneration</a></span>.
@@ -67,11 +67,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MatroidGeneration2023.02-01,
+    @misc{ MatroidGeneration2023.06-01,
       author =           {Barakat, M. and K{\"u}hne, L.},
       title =            {{MatroidGeneration},   Generate   low-rank   matroids,
-                          {V}ersion 2023.02-01},
-      month =            {Feb},
+                          {V}ersion 2023.06-01},
+      month =            {Jun},
       year =             {2023},
       note =             {GAP package},
       howpublished =     {\href

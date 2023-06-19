@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "MatroidGeneration",
 Subtitle := "Generate low-rank matroids",
-Version := "2023.02-01",
+Version := "2023.06-01",
 
-Date := "10/02/2023",
-Date := "10/02/2023",
+Date := "19/06/2023",
+Date := "19/06/2023",
 License := "GPL-2.0-or-later",
 
 

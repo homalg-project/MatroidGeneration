@@ -58,7 +58,7 @@
 Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel( InfoWarning, 0 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ZariskiFrames" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ZariskiFrames", "&gt;= 2023.06-06" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := DistinguishedQuasiAffineSet( M );</span>
 V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )
@@ -128,7 +128,11 @@ modulo [ a9^2-a9-9 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">charset := ConstructibleProjection( e );</span>
 ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( charset );</span>
-V( &lt;&gt; ) \ V( &lt;2&gt; ) \ V( &lt;5&gt; )
+( V( &lt;&gt; )
+
+\ V( &lt;2&gt; )
+
+\ V( &lt;5&gt; ) )
 </pre></div>
 
 
