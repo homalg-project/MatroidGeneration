@@ -6,7 +6,7 @@ matroid := MatroidByCoatomsNC( d );
 ZZ := HomalgRingOfIntegersInSingular( );
 SetInfoLevel( InfoWarning, 0 );
 M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );
-LoadPackage( "ZariskiFrames" );
+LoadPackage( "ZariskiFrames", ">= 2023.06-06" );
 m := DistinguishedQuasiAffineSet( M );
 e := EmbedInSmallerAmbientSpace( m );
 a := DistinguishedLocallyClosedPart( e );

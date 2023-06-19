@@ -25,7 +25,7 @@ ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
 SetInfoLevel( InfoWarning, 0 );
 M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );;
-LoadPackage( "ZariskiFrames" );
+LoadPackage( "ZariskiFrames", ">= 2023.06-06" );
 #! true
 m := DistinguishedQuasiAffineSet( M );
 #! V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )
@@ -95,5 +95,9 @@ Display( p );
 charset := ConstructibleProjection( e );
 #! ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )
 Display( charset );
-#! V( <> ) \ V( <2> ) \ V( <5> )
+#! ( V( <> )
+#! 
+#! \ V( <2> )
+#! 
+#! \ V( <5> ) )
 #! @EndExample
