@@ -21,10 +21,10 @@ d := [ [ 1, 2, 3, 4, 5 ], [ 1, 6, 7, 8, 9 ],
 matroid := MatroidByCoatomsNC( 14, 3, d );
 #! <A matroid>
 #homalgIOMode( "f" );
-ZZ := HomalgRingOfIntegersInSingular( );
+zz := HomalgRingOfIntegersInSingular( );
 #! Z
 SetInfoLevel( InfoWarning, 0 );
-M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );;
+M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );;
 LoadPackage( "ZariskiFrames", ">= 2023.06-06" );
 #! true
 m := DistinguishedQuasiAffineSet( M );
