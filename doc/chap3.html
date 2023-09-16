@@ -51,10 +51,10 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matroid := MatroidByCoatomsNC( 14, 3, d );</span>
 &lt;A matroid&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#homalgIOMode( "f" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegersInSingular( );</span>
 Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel( InfoWarning, 0 );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, ZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ZariskiFrames", "&gt;= 2023.06-06" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := DistinguishedQuasiAffineSet( M );</span>
