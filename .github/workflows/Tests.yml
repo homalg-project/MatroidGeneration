@@ -55,7 +55,7 @@ jobs:
           git clone --depth 1 -vv https://github.com/homalg-project/alcove.git
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/Toposes.git
-          git clone --depth 1 -vv https://github.com/homalg-project/CategoryConstructor.git
+          git clone --depth 1 -vv https://github.com/homalg-project/ToolsForCategoricalTowers.git
           git clone --depth 1 -vv https://github.com/homalg-project/Locales.git
           git clone --depth 1 -vv https://github.com/homalg-project/ZariskiFrames.git
       - name: Build documentation of packages which we might want to reference
@@ -69,7 +69,7 @@ jobs:
           if [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ]; then make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc; fi
           if [ -d "homalg_project/homalg" ]; then make -C "homalg_project/homalg" doc; fi
           if [ -d "homalg_project/Modules" ]; then make -C "homalg_project/Modules" doc; fi
-          if [ -d "CategoricalTowers/CategoryConstructor" ]; then make -C "CategoricalTowers/CategoryConstructor" doc; fi
+          if [ -d "CategoricalTowers/ToolsForCategoricalTowers" ]; then make -C "CategoricalTowers/ToolsForCategoricalTowers" doc; fi
           if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
       - name: Test MatroidGeneration
         run: |
