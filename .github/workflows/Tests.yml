@@ -56,6 +56,9 @@ jobs:
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/Toposes.git
           git clone --depth 1 -vv https://github.com/homalg-project/ToolsForCategoricalTowers.git
+          git clone --depth 1 -vv https://github.com/homalg-project/QuotientCategories.git
+          git clone --depth 1 -vv https://github.com/homalg-project/FinSetsForCAP.git
+          git clone --depth 1 -vv https://github.com/homalg-project/FpCategories.git
           git clone --depth 1 -vv https://github.com/homalg-project/Locales.git
           git clone --depth 1 -vv https://github.com/homalg-project/ZariskiFrames.git
       - name: Build documentation of packages which we might want to reference
