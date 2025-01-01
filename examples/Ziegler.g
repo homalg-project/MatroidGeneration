@@ -1,5 +1,6 @@
 LoadPackage( "MatroidGeneration" );
-db := AttachMatroidsDatabase( : localhost );
+#db := AttachMatroidsDatabase( : localhost );
+db := AttachMatroidsDatabase( );
 d := db.matroids_split_public.document("d8ffc0e083ea534e34556086ac2416ca48cc0483");
 matroid := MatroidByCoatomsNC( d );
 zz := HomalgRingOfIntegersInSingular( );
