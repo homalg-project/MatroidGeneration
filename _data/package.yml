@@ -1,7 +1,7 @@
 name: MatroidGeneration
-version: "2025.01-01"
+version: "2025.08-01"
 license: "GPL-2.0-or-later"
-date: 2025-01-01
+date: 2025-08-29
 description: |
     Generate low-rank matroids
 
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.01-01/MatroidGeneration-2025.01-01.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.08-01/MatroidGeneration-2025.08-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.01-01/MatroidGeneration-2025.01-01.zip
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.08-01/MatroidGeneration-2025.08-01.zip
 
-pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.01-01/MatroidGeneration-2025.01-01-manual.pdf
+pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2025.08-01/MatroidGeneration-2025.08-01-manual.pdf
 
 abstract: |
 
@@ -57,10 +57,10 @@ keywords: |
     matroid generation, low-rank matroids.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BK01</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
+    [<span class='BibKey'>BK29</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
      <i class='BibTitle'>MatroidGeneration, Generate low-rank matroids,
-             Version 2025.01-01</i>
-     (<span class='BibYear'>1-01</span>)<br />
+             Version 2025.08-01</i>
+     (<span class='BibYear'>8-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MatroidGeneration">https://homalg-project.github.io/pkg/MatroidGeneration</a></span>.
     </p>
@@ -69,11 +69,11 @@ citeas: |
 bibtex: |
     @misc{ MatroidGeneration,
       author =           {Barakat, M. and K{\"u}hne, L.},
-      title =            {{MatroidGeneration},                          Generate
-                          low\texttt{\symbol{45}}rank     matroids,    {V}ersion
-                          2025.01\texttt{\symbol{45}}01},
+      title =            {{MatroidGeneration},                         {Generate
+                          low\texttt{\symbol{45}}rank    matroids},    {V}ersion
+                          2025.08\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {1\texttt{\symbol{45}}01},
+      year =             {8\texttt{\symbol{45}}29},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/MatroidGeneration}
@@ -82,6 +82,6 @@ bibtex: |
                           {}{}{}\texttt{MatroidGeneration}}},
       keywords =         {matroid     generation,    low\texttt{\symbol{45}}rank
                           matroids},
-      printedkey =       {BK01}
+      printedkey =       {BK29}
     }
 
