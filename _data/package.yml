@@ -1,5 +1,5 @@
 name: MatroidGeneration
-version: "2026.02-01"
+version: "2026.05-01"
 license: "GPL-2.0-or-later"
 date: 2026-05-10
 description: |
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/MatroidGeneration/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.02-01/MatroidGeneration-2026.02-01.tar.gz
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.05-01/MatroidGeneration-2026.05-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.02-01/MatroidGeneration-2026.02-01.zip
+      url: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.05-01/MatroidGeneration-2026.05-01.zip
 
-pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.02-01/MatroidGeneration-2026.02-01-manual.pdf
+pdf: https://github.com/homalg-project/MatroidGeneration/releases/download/v2026.05-01/MatroidGeneration-2026.05-01-manual.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BK10</span>]   <b class='BibAuthor'>Barakat, M. and Kühne, L.</b>,
      <i class='BibTitle'>MatroidGeneration, Generate low-rank matroids,
-             Version 2026.02-01</i>
+             Version 2026.05-01</i>
      (<span class='BibYear'>5-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MatroidGeneration">https://homalg-project.github.io/pkg/MatroidGeneration</a></span>.
@@ -71,7 +71,7 @@ bibtex: |
       author =           {Barakat, M. and K{\"u}hne, L.},
       title =            {{MatroidGeneration},                         {Generate
                           low\texttt{\symbol{45}}rank    matroids},    {V}ersion
-                          2026.02\texttt{\symbol{45}}01},
+                          2026.05\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
       year =             {5\texttt{\symbol{45}}10},
       note =             {GAP package},
