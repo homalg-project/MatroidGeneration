@@ -40,6 +40,8 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MatroidGeneration", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#db := AttachMatroidsDatabase( ); # needs arangosh</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#key := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#d := db.matroids_split_public.document( key );</span>
@@ -58,7 +60,7 @@
 Z
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel( InfoWarning, 0 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ZariskiFrames", "&gt;= 2023.06-06" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ZariskiFrames", "&gt;= 2026.10-04", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := DistinguishedQuasiAffineSet( M );</span>
 V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )

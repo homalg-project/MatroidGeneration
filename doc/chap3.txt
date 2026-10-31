@@ -8,6 +8,8 @@
   but not inductively free. It has [23X14[123X atoms (cf. [BBJ+21]).[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MatroidGeneration", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X#db := AttachMatroidsDatabase( ); # needs arangosh[127X[104X
     [4X[25Xgap>[125X [27X#key := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";[127X[104X
     [4X[25Xgap>[125X [27X#d := db.matroids_split_public.document( key );[127X[104X
@@ -26,7 +28,7 @@
     [4X[28XZ[128X[104X
     [4X[25Xgap>[125X [27XSetInfoLevel( InfoWarning, 0 );[127X[104X
     [4X[25Xgap>[125X [27XM := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );;[127X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "ZariskiFrames", ">= 2023.06-06" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ZariskiFrames", ">= 2026.10-04", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xm := DistinguishedQuasiAffineSet( M );[127X[104X
     [4X[28XV_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )[128X[104X
