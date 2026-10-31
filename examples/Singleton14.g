@@ -1,4 +1,4 @@
-LoadPackage( "MatroidGeneration" );
+LoadPackage( "MatroidGeneration", false );
 db := AttachMatroidsDatabase();
 d := db.matroids_split_public.document("ec7965794e6c0cc2766eeb2b8557fa149a3f8fc9");
 matroid := MatroidByCoatomsNC( d );
@@ -6,7 +6,7 @@ matroid := MatroidByCoatomsNC( d );
 zz := HomalgRingOfIntegersInSingular( );
 SetInfoLevel( InfoWarning, 0 );
 M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );
-LoadPackage( "ZariskiFrames", ">= 2023.06-06" );
+LoadPackage( "ZariskiFrames", ">= 2026.10-04", false );
 m := DistinguishedQuasiAffineSet( M );
 e := EmbedInSmallerAmbientSpace( m );
 a := DistinguishedLocallyClosedPart( e );
