@@ -1,12 +1,12 @@
 #! @Chunk DivFreeNotIndFree
 
-LoadPackage( "MatroidGeneration" );
-
 #! This is the smallest representable rank $3$ matroid
 #! which is divisionally free but not inductively free.
 #! It has $14$ atoms (cf. <Cite Key="BBJKL"/>).
 
 #! @Example
+LoadPackage( "MatroidGeneration", false );
+#! true
 #db := AttachMatroidsDatabase( ); # needs arangosh
 #key := "ef53049d834fba1b21f36c365d7f1d46d7fce2f2";
 #d := db.matroids_split_public.document( key );
@@ -25,7 +25,7 @@ zz := HomalgRingOfIntegersInSingular( );
 #! Z
 SetInfoLevel( InfoWarning, 0 );
 M := EquationsAndInequationsOfModuliSpaceOfMatroid( matroid, zz );;
-LoadPackage( "ZariskiFrames", ">= 2023.06-06" );
+LoadPackage( "ZariskiFrames", ">= 2026.10-04", false );
 #! true
 m := DistinguishedQuasiAffineSet( M );
 #! V_{Z[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12]}( I )
